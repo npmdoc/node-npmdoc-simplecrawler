@@ -1,0 +1,1741 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/cgiffard/node-simplecrawler"
+
+    >simplecrawler (v1.1.1)</a>
+</h1>
+<h4>Very straightforward, event driven web crawler. Features a flexible queue interface and a basic cache mechanism with extensible backend.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler">module simplecrawler</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cache">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>cache
+            <span class="apidocSignatureSpan">(cacheLoadParameter, cacheBackend)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>cookies
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.crawl">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>crawl
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>queue
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.super_">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">simplecrawler.</span>cache.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">simplecrawler.</span>cookies.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">simplecrawler.</span>queue.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler.cache">module simplecrawler.cache</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cache.cache">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>cache
+            <span class="apidocSignatureSpan">(cacheLoadParameter, cacheBackend)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cache.Cache">
+            function <span class="apidocSignatureSpan">simplecrawler.cache.</span>Cache
+            <span class="apidocSignatureSpan">(cacheLoadParameter, cacheBackend)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cache.FilesystemBackend">
+            function <span class="apidocSignatureSpan">simplecrawler.cache.</span>FilesystemBackend
+            <span class="apidocSignatureSpan">(loadParameter)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler.cache.prototype">module simplecrawler.cache.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cache.prototype.getCacheData">
+            function <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>getCacheData
+            <span class="apidocSignatureSpan">(queueObject, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cache.prototype.saveCache">
+            function <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>saveCache
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cache.prototype.setCacheData">
+            function <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>setCacheData
+            <span class="apidocSignatureSpan">(queueObject, data, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>_eventsCount</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>_events</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>domain</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler.cookies">module simplecrawler.cookies</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.cookies">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>cookies
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.Cookie">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.</span>Cookie
+            <span class="apidocSignatureSpan">(name, value, expires, path, domain, httponly)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.super_">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler.cookies.prototype">module simplecrawler.cookies.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.prototype.add">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>add
+            <span class="apidocSignatureSpan">(name, value, expiry, path, domain, httponly, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.prototype.addFromHeaders">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>addFromHeaders
+            <span class="apidocSignatureSpan">(headers, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.prototype.get">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>get
+            <span class="apidocSignatureSpan">(name, domain, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.prototype.getAsHeader">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>getAsHeader
+            <span class="apidocSignatureSpan">(domain, path, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.prototype.remove">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>remove
+            <span class="apidocSignatureSpan">(name, domain, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.cookies.prototype.toString">
+            function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler.queue">module simplecrawler.queue</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.queue">
+            function <span class="apidocSignatureSpan">simplecrawler.</span>queue
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.super_">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler.queue.prototype">module simplecrawler.queue.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.add">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>add
+            <span class="apidocSignatureSpan">(queueItem, force, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.avg">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>avg
+            <span class="apidocSignatureSpan">(statisticName, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.countItems">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>countItems
+            <span class="apidocSignatureSpan">(comparator, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.defrost">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>defrost
+            <span class="apidocSignatureSpan">(filename, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.exists">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>exists
+            <span class="apidocSignatureSpan">(url, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.filterItems">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>filterItems
+            <span class="apidocSignatureSpan">(comparator, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.freeze">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>freeze
+            <span class="apidocSignatureSpan">(filename, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.get">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>get
+            <span class="apidocSignatureSpan">(index, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.getLength">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>getLength
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.max">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>max
+            <span class="apidocSignatureSpan">(statisticName, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.min">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>min
+            <span class="apidocSignatureSpan">(statisticName, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.oldestUnfetchedItem">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>oldestUnfetchedItem
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.simplecrawler.queue.prototype.update">
+            function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>update
+            <span class="apidocSignatureSpan">(id, updates, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.simplecrawler" id="apidoc.module.simplecrawler">module simplecrawler</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cache" id="apidoc.element.simplecrawler.cache">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>cache
+        <span class="apidocSignatureSpan">(cacheLoadParameter, cacheBackend)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Cache(cacheLoadParameter, cacheBackend) {
+
+    // Ensure parameters are how we want them...
+    cacheBackend = typeof cacheBackend === &#x22;object&#x22; ? cacheBackend : FilesystemBackend;
+    cacheLoadParameter = cacheLoadParameter instanceof Array ? cacheLoadParameter : [cacheLoadParameter];
+
+    // Now we can just run the factory.
+    this.datastore = cacheBackend.apply(cacheBackend, cacheLoadParameter);
+
+    // Instruct the backend to load up.
+    this.datastore.load();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    default `discoverResources` function is used.*
+* `crawler.cache` -
+    Specify a cache architecture to use when crawling. Must implement
+    `SimpleCache` interface. You can save the site to disk using the built in
+    file system cache like this:
+
+    ```js
+    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>(&#x27;pathToCacheDirectory&#x27;);
+    ```
+
+* `crawler.useProxy=false` -
+    The crawler should use an HTTP proxy to make its requests.
+* `crawler.proxyHostname=&#x22;127.0.0.1&#x22;` -
+    The hostname of the proxy to use for requests.
+* `crawler.proxyPort=8123` -
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies" id="apidoc.element.simplecrawler.cookies">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>cookies
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">cookies = function () {
+    EventEmitter.call(this);
+
+<span class="apidocCodeCommentSpan">    /**
+     * The actual jar that holds the cookies
+     * @private
+     * @type {Array}
+     */
+</span>    this.cookies = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.crawl" id="apidoc.element.simplecrawler.crawl">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>crawl
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">crawl = function () {
+    throw new Error(
+        &#x22;Crawler.crawl is deprecated as of version 1.0.0! &#x22; +
+        &#x22;You can now pass a single URL directly to the constructor. &#x22; +
+        &#x22;See the documentation for more details!&#x22;
+    );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue" id="apidoc.element.simplecrawler.queue">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>queue
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">queue = function () {
+    Array.call(this);
+
+<span class="apidocCodeCommentSpan">    /**
+     * Speeds up {@link FetchQueue.oldestUnfetchedItem} by storing the index at
+     * which the latest oldest unfetched queue item was found.
+     * @name FetchQueue._oldestUnfetchedIndex
+     * @private
+     * @type {Number}
+     */
+</span>    Object.defineProperty(this, &#x22;_oldestUnfetchedIndex&#x22;, {
+        enumerable: false,
+        writable: true,
+        value: 0
+    });
+
+    /**
+     * Serves as a cache for what URL&#x27;s have been fetched. Keys are URL&#x27;s,
+     * values are booleans.
+     * @name FetchQueue._scanIndex
+     * @private
+     * @type {Object}
+     */
+    Object.defineProperty(this, &#x22;_scanIndex&#x22;, {
+        enumerable: false,
+        writable: true,
+        value: {}
+    });
+
+    /**
+     * Controls what properties can be operated on with the
+     * {@link FetchQueue#min}, {@link FetchQueue#avg} and {@link FetchQueue#max}
+     * methods.
+     * @name FetchQueue._allowedStatistics
+     * @type {Array}
+     */
+    Object.defineProperty(this, &#x22;_allowedStatistics&#x22;, {
+        enumerable: false,
+        writable: true,
+        value: [
+            &#x22;actualDataSize&#x22;,
+            &#x22;contentLength&#x22;,
+            &#x22;downloadTime&#x22;,
+            &#x22;requestLatency&#x22;,
+            &#x22;requestTime&#x22;
+        ]
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.super_" id="apidoc.element.simplecrawler.super_">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.simplecrawler.cache" id="apidoc.module.simplecrawler.cache">module simplecrawler.cache</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cache.cache" id="apidoc.element.simplecrawler.cache.cache">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>cache
+        <span class="apidocSignatureSpan">(cacheLoadParameter, cacheBackend)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Cache(cacheLoadParameter, cacheBackend) {
+
+    // Ensure parameters are how we want them...
+    cacheBackend = typeof cacheBackend === &#x22;object&#x22; ? cacheBackend : FilesystemBackend;
+    cacheLoadParameter = cacheLoadParameter instanceof Array ? cacheLoadParameter : [cacheLoadParameter];
+
+    // Now we can just run the factory.
+    this.datastore = cacheBackend.apply(cacheBackend, cacheLoadParameter);
+
+    // Instruct the backend to load up.
+    this.datastore.load();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    default `discoverResources` function is used.*
+* `crawler.cache` -
+    Specify a cache architecture to use when crawling. Must implement
+    `SimpleCache` interface. You can save the site to disk using the built in
+    file system cache like this:
+
+    ```js
+    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>(&#x27;pathToCacheDirectory&#x27;);
+    ```
+
+* `crawler.useProxy=false` -
+    The crawler should use an HTTP proxy to make its requests.
+* `crawler.proxyHostname=&#x22;127.0.0.1&#x22;` -
+    The hostname of the proxy to use for requests.
+* `crawler.proxyPort=8123` -
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cache.Cache" id="apidoc.element.simplecrawler.cache.Cache">
+        function <span class="apidocSignatureSpan">simplecrawler.cache.</span>Cache
+        <span class="apidocSignatureSpan">(cacheLoadParameter, cacheBackend)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Cache(cacheLoadParameter, cacheBackend) {
+
+    // Ensure parameters are how we want them...
+    cacheBackend = typeof cacheBackend === &#x22;object&#x22; ? cacheBackend : FilesystemBackend;
+    cacheLoadParameter = cacheLoadParameter instanceof Array ? cacheLoadParameter : [cacheLoadParameter];
+
+    // Now we can just run the factory.
+    this.datastore = cacheBackend.apply(cacheBackend, cacheLoadParameter);
+
+    // Instruct the backend to load up.
+    this.datastore.load();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cache.FilesystemBackend" id="apidoc.element.simplecrawler.cache.FilesystemBackend">
+        function <span class="apidocSignatureSpan">simplecrawler.cache.</span>FilesystemBackend
+        <span class="apidocSignatureSpan">(loadParameter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function backend(loadParameter) {
+    return new FSBackend(loadParameter);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.simplecrawler.cache.prototype" id="apidoc.module.simplecrawler.cache.prototype">module simplecrawler.cache.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cache.prototype.getCacheData" id="apidoc.element.simplecrawler.cache.prototype.getCacheData">
+        function <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>getCacheData
+        <span class="apidocSignatureSpan">(queueObject, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getCacheData = function (queueObject, callback) {
+    this.datastore.getItem(queueObject, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cache.prototype.saveCache" id="apidoc.element.simplecrawler.cache.prototype.saveCache">
+        function <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>saveCache
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">saveCache = function () {
+    this.datastore.saveCache();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cache.prototype.setCacheData" id="apidoc.element.simplecrawler.cache.prototype.setCacheData">
+        function <span class="apidocSignatureSpan">simplecrawler.cache.prototype.</span>setCacheData
+        <span class="apidocSignatureSpan">(queueObject, data, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setCacheData = function (queueObject, data, callback) {
+    this.datastore.setItem(queueObject, data, callback);
+    this.emit(&#x22;setcache&#x22;, queueObject, data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.simplecrawler.cookies" id="apidoc.module.simplecrawler.cookies">module simplecrawler.cookies</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.cookies" id="apidoc.element.simplecrawler.cookies.cookies">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>cookies
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">cookies = function () {
+    EventEmitter.call(this);
+
+<span class="apidocCodeCommentSpan">    /**
+     * The actual jar that holds the cookies
+     * @private
+     * @type {Array}
+     */
+</span>    this.cookies = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.Cookie" id="apidoc.element.simplecrawler.cookies.Cookie">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.</span>Cookie
+        <span class="apidocSignatureSpan">(name, value, expires, path, domain, httponly)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Cookie = function (name, value, expires, path, domain, httponly) {
+    if (!name) {
+        throw new Error(&#x22;A name is required to create a cookie.&#x22;);
+    }
+
+    // Parse date to timestamp - consider it never expiring if timestamp is not
+    // passed to the function
+    if (expires) {
+
+        if (typeof expires !== &#x22;number&#x22;) {
+            expires = (new Date(expires)).getTime();
+        }
+
+    } else {
+        expires = -1;
+    }
+
+    this.name = name;
+    this.value = value || &#x22;&#x22;;
+    this.expires = expires;
+    this.path = path || &#x22;/&#x22;;
+    this.domain = domain || &#x22;*&#x22;;
+    this.httponly = Boolean(httponly);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.super_" id="apidoc.element.simplecrawler.cookies.super_">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.simplecrawler.cookies.prototype" id="apidoc.module.simplecrawler.cookies.prototype">module simplecrawler.cookies.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.prototype.add" id="apidoc.element.simplecrawler.cookies.prototype.add">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>add
+        <span class="apidocSignatureSpan">(name, value, expiry, path, domain, httponly, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (name, value, expiry, path, domain, httponly, callback) {
+    var existingIndex = -1, newCookie;
+
+    if (arguments.length &#x3e; 1) {
+        newCookie = new Cookie(name, value, expiry, path, domain, httponly);
+    } else if (name instanceof Cookie) {
+        newCookie = name;
+    } else {
+        newCookie = Cookie.fromString(name);
+    }
+
+    // Are we updating an existing cookie or adding a new one?
+    this.cookies.forEach(function(cookie, index) {
+        if (cookie.name === newCookie.name &#x26;&#x26; cookie.matchDomain(newCookie.domain)) {
+            existingIndex = index;
+        }
+    });
+
+    if (existingIndex === -1) {
+        this.cookies.push(newCookie);
+    } else {
+        this.cookies[existingIndex] = newCookie;
+    }
+
+<span class="apidocCodeCommentSpan">    /**
+     * Fired when a cookie has been added to the jar
+     * @event CookieJar#addcookie
+     * @param {Cookie} cookie The cookie that has been added
+     */
+</span>    this.emit(&#x22;addcookie&#x22;, newCookie);
+
+    if (callback instanceof Function) {
+        callback(null, newCookie);
+    }
+
+    return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var jar = this;
+
+if (!Array.isArray(headers)) {
+    headers = [headers];
+}
+
+headers.forEach(function(header) {
+    jar.<span class="apidocCodeKeywordSpan">add</span>(header);
+});
+
+if (callback instanceof Function) {
+    callback(null);
+}
+
+return jar;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.prototype.addFromHeaders" id="apidoc.element.simplecrawler.cookies.prototype.addFromHeaders">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>addFromHeaders
+        <span class="apidocSignatureSpan">(headers, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addFromHeaders = function (headers, callback) {
+    var jar = this;
+
+    if (!Array.isArray(headers)) {
+        headers = [headers];
+    }
+
+    headers.forEach(function(header) {
+        jar.add(header);
+    });
+
+    if (callback instanceof Function) {
+        callback(null);
+    }
+
+    return jar;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// request and the next
+jar: true
+    }, function (error, response, body) {
+// Start by saving the cookies. We&#x27;ll likely be assigned a session cookie
+// straight off the bat, and then the server will remember the fact that
+// this session is logged in as user &#x22;iamauser&#x22; after we&#x27;ve successfully
+// logged in
+crawler.cookies.<span class="apidocCodeKeywordSpan">addFromHeaders</span>(response.headers[&#x22;set-cookie&#x22;]);
+
+// We want to get the names and values of all relevant inputs on the page,
+// so that any CSRF tokens or similar things are included in the POST
+// request
+var $ = cheerio.load(body),
+    formDefaults = {},
+    // You should adapt these selectors so that they target the
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.prototype.get" id="apidoc.element.simplecrawler.cookies.prototype.get">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>get
+        <span class="apidocSignatureSpan">(name, domain, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (name, domain, callback) {
+    var cookies = this.cookies.filter(function(cookie) {
+        // If the names don&#x27;t match, we&#x27;re not returning this cookie
+        if (Boolean(name) &#x26;&#x26; cookie.name !== name) {
+            return false;
+        }
+
+        // If the domains don&#x27;t match, we&#x27;re not returning this cookie
+        if (Boolean(domain) &#x26;&#x26; !cookie.matchDomain(domain)) {
+            return false;
+        }
+
+        return true;
+    });
+
+    if (callback instanceof Function) {
+        callback(null, cookies);
+    }
+
+    return cookies;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Like any other web crawler, simplecrawler has a queue. It can be directly
+accessed through `crawler.queue` and implements an asynchronous interface for
+accessing queue items and statistics. There are several methods for interacting
+with the queue, the simplest being `crawler.queue.get`, which lets you get a
+queue item at a specific index in the queue.
+
+```js
+crawler.queue.<span class="apidocCodeKeywordSpan">get</span>(5, function (queueItem) {
+    // Do something with the queueItem
+});
+```
+
+*All queue method are in reality synchronous by default, but simplecrawler is
+built to be able to use different queues that implement the same interface, and
+those implementations can be asynchronous - which means they could eg. be backed
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.prototype.getAsHeader" id="apidoc.element.simplecrawler.cookies.prototype.getAsHeader">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>getAsHeader
+        <span class="apidocSignatureSpan">(domain, path, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAsHeader = function (domain, path, callback) {
+    var headers = this.cookies.filter(function(cookie) {
+        if (cookie.isExpired()) {
+            return false;
+        }
+        if (!domain &#x26;&#x26; !path) {
+            return true;
+        }
+        if (domain) {
+            return cookie.matchDomain(domain);
+        }
+        if (path) {
+            return cookie.matchPath(path);
+        }
+    })
+    .map(function(cookie) {
+        return cookie.toString();
+    });
+
+    if (callback instanceof Function) {
+        callback(null, headers);
+    }
+
+    return headers;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+/**
+* Generates a newline-separated list of all cookies in the jar
+* @return {String} Returns stringified versions of all cookies in the jar in a newline separated string
+*/
+CookieJar.prototype.toString = function() {
+   return this.<span class="apidocCodeKeywordSpan">getAsHeader</span>().join(&#x22;\n&#x22;);
+};
+
+
+/**
+* Creates a new cookies
+* @class
+* @param {String} name                       Name of the new cookie
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.prototype.remove" id="apidoc.element.simplecrawler.cookies.prototype.remove">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>remove
+        <span class="apidocSignatureSpan">(name, domain, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">remove = function (name, domain, callback) {
+    var cookiesRemoved = [],
+        jar = this;
+
+    jar.cookies.forEach(function(cookie, index) {
+        // If the names don&#x27;t match, we&#x27;re not removing this cookie
+        if (Boolean(name) &#x26;&#x26; cookie.name !== name) {
+            return false;
+        }
+
+        // If the domains don&#x27;t match, we&#x27;re not removing this cookie
+        if (Boolean(domain) &#x26;&#x26; !cookie.matchDomain(domain)) {
+            return false;
+        }
+
+        // Matched. Remove!
+        cookiesRemoved.push(jar.cookies.splice(index, 1));
+    });
+
+<span class="apidocCodeCommentSpan">    /**
+     * Fired when one or multiple cookie have been removed from the jar
+     * @event CookieJar#removecookie
+     * @param {Cookie[]} cookie The cookies that have been removed
+     */
+</span>    jar.emit(&#x22;removecookie&#x22;, cookiesRemoved);
+
+    if (callback instanceof Function) {
+        callback(null, cookiesRemoved);
+    }
+
+    return cookiesRemoved;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.cookies.prototype.toString" id="apidoc.element.simplecrawler.cookies.prototype.toString">
+        function <span class="apidocSignatureSpan">simplecrawler.cookies.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return this.getAsHeader().join(&#x22;\n&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+browser, like phantomJS.
+
+The example below demonstrates how one might achieve basic HTML-correct
+discovery of only link tags using cheerio.
+
+```js
+crawler.discoverResources = function(buffer, queueItem) {
+    var $ = cheerio.load(buffer.<span class="apidocCodeKeywordSpan">toString</span>(&#x22;utf8&#x22;));
+
+    return $(&#x22;a[href]&#x22;).map(function () {
+        return $(this).attr(&#x22;href&#x22;);
+    }).get();
+};
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.simplecrawler.queue" id="apidoc.module.simplecrawler.queue">module simplecrawler.queue</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.queue" id="apidoc.element.simplecrawler.queue.queue">
+        function <span class="apidocSignatureSpan">simplecrawler.</span>queue
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">queue = function () {
+    Array.call(this);
+
+<span class="apidocCodeCommentSpan">    /**
+     * Speeds up {@link FetchQueue.oldestUnfetchedItem} by storing the index at
+     * which the latest oldest unfetched queue item was found.
+     * @name FetchQueue._oldestUnfetchedIndex
+     * @private
+     * @type {Number}
+     */
+</span>    Object.defineProperty(this, &#x22;_oldestUnfetchedIndex&#x22;, {
+        enumerable: false,
+        writable: true,
+        value: 0
+    });
+
+    /**
+     * Serves as a cache for what URL&#x27;s have been fetched. Keys are URL&#x27;s,
+     * values are booleans.
+     * @name FetchQueue._scanIndex
+     * @private
+     * @type {Object}
+     */
+    Object.defineProperty(this, &#x22;_scanIndex&#x22;, {
+        enumerable: false,
+        writable: true,
+        value: {}
+    });
+
+    /**
+     * Controls what properties can be operated on with the
+     * {@link FetchQueue#min}, {@link FetchQueue#avg} and {@link FetchQueue#max}
+     * methods.
+     * @name FetchQueue._allowedStatistics
+     * @type {Array}
+     */
+    Object.defineProperty(this, &#x22;_allowedStatistics&#x22;, {
+        enumerable: false,
+        writable: true,
+        value: [
+            &#x22;actualDataSize&#x22;,
+            &#x22;contentLength&#x22;,
+            &#x22;downloadTime&#x22;,
+            &#x22;requestLatency&#x22;,
+            &#x22;requestTime&#x22;
+        ]
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.super_" id="apidoc.element.simplecrawler.queue.super_">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Array() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.simplecrawler.queue.prototype" id="apidoc.module.simplecrawler.queue.prototype">module simplecrawler.queue.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.add" id="apidoc.element.simplecrawler.queue.prototype.add">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>add
+        <span class="apidocSignatureSpan">(queueItem, force, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (queueItem, force, callback) {
+    var queue = this;
+
+    function addToQueue() {
+        queue._scanIndex[queueItem.url] = true;
+        queueItem.id = queue.length;
+        queueItem.status = &#x22;queued&#x22;;
+        queue.push(queueItem);
+        callback(null, queueItem);
+    }
+
+    queue.exists(queueItem.url, function(err, exists) {
+        if (err) {
+            callback(err);
+        } else if (!exists) {
+            addToQueue();
+        } else if (force) {
+            if (queue.indexOf(queueItem) &#x3e; -1) {
+                callback(new Error(&#x22;Can&#x27;t add a queueItem instance twice. You may create a new one from the same URL however.&#x22;));
+            } else {
+                addToQueue();
+            }
+        } else {
+            var error = new Error(&#x22;Resource already exists in queue!&#x22;);
+            error.code = &#x22;DUPLICATE&#x22;;
+            callback(error);
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var jar = this;
+
+if (!Array.isArray(headers)) {
+    headers = [headers];
+}
+
+headers.forEach(function(header) {
+    jar.<span class="apidocCodeKeywordSpan">add</span>(header);
+});
+
+if (callback instanceof Function) {
+    callback(null);
+}
+
+return jar;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.avg" id="apidoc.element.simplecrawler.queue.prototype.avg">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>avg
+        <span class="apidocSignatureSpan">(statisticName, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">avg = function (statisticName, callback) {
+    var sum = 0,
+        count = 0,
+        queue = this;
+
+    if (queue._allowedStatistics.indexOf(statisticName) === -1) {
+        return callback(new Error(&#x22;Invalid statistic&#x22;));
+    }
+
+    queue.forEach(function(item) {
+        if (item.fetched &#x26;&#x26; Number.isFinite(item.stateData[statisticName])) {
+            sum += item.stateData[statisticName];
+            count++;
+        }
+    });
+
+    callback(null, sum / count);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+crawler.queue.max(&#x22;requestLatency&#x22;, function(error, max) {
+    console.log(&#x22;The maximum request latency was %dms.&#x22;, max);
+});
+crawler.queue.min(&#x22;downloadTime&#x22;, function(error, min) {
+    console.log(&#x22;The minimum download time was %dms.&#x22;, min);
+});
+crawler.queue.<span class="apidocCodeKeywordSpan">avg</span>(&#x22;actualDataSize&#x22;, function(error, avg) {
+    console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
+});
+```
+
+For general filtering or counting of queue items, there are two methods:
+`crawler.queue.filterItems` and `crawler.queue.countItems`. Both take an object
+comparator and a callback.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.countItems" id="apidoc.element.simplecrawler.queue.prototype.countItems">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>countItems
+        <span class="apidocSignatureSpan">(comparator, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">countItems = function (comparator, callback) {
+    this.filterItems(comparator, function(error, items) {
+        if (error) {
+            callback(error);
+        } else {
+            callback(null, items.length);
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+For general filtering or counting of queue items, there are two methods:
+`crawler.queue.filterItems` and `crawler.queue.countItems`. Both take an object
+comparator and a callback.
+
+```js
+crawler.queue.<span class="apidocCodeKeywordSpan">countItems</span>({ fetched: true }, function(error, count) {
+    console.log(&#x22;The number of completed items is %d&#x22;, count);
+});
+
+crawler.queue.filterItems({ status: &#x22;notfound&#x22; }, function(error, items) {
+    console.log(&#x22;These items returned 404 or 410 HTTP statuses&#x22;, items);
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.defrost" id="apidoc.element.simplecrawler.queue.prototype.defrost">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>defrost
+        <span class="apidocSignatureSpan">(filename, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">defrost = function (filename, callback) {
+    var queue = this,
+        defrostedQueue = [];
+
+    fs.readFile(filename, function(err, fileData) {
+        if (err) {
+            return callback(err);
+        }
+
+        if (!fileData.toString(&#x22;utf8&#x22;).length) {
+            return callback(new Error(&#x22;Failed to defrost queue from zero-length JSON.&#x22;));
+        }
+
+        try {
+            defrostedQueue = JSON.parse(fileData.toString(&#x22;utf8&#x22;));
+        } catch (error) {
+            return callback(error);
+        }
+
+        queue._oldestUnfetchedIndex = defrostedQueue.length - 1;
+        queue._scanIndex = {};
+
+        for (var i = 0; i &#x3c; defrostedQueue.length; i++) {
+            var queueItem = defrostedQueue[i];
+            queue.push(queueItem);
+
+            if (queueItem.status === &#x22;queued&#x22;) {
+                queue._oldestUnfetchedIndex = Math.min(queue._oldestUnfetchedIndex, i);
+            }
+
+            queue._scanIndex[queueItem.url] = true;
+        }
+
+        callback(null, queue);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+otherwise you&#x27;ll get an empty file.
+
+```js
+crawler.queue.freeze(&#x22;mysavedqueue.json&#x22;, function () {
+    process.exit();
+});
+
+crawler.queue.<span class="apidocCodeKeywordSpan">defrost</span>(&#x22;mysavedqueue.json&#x22;);
+```
+
+## Cookies
+
+simplecrawler has an internal cookie jar, which collects and resends cookies
+automatically and by default. If you want to turn this off, set the
+`crawler.acceptCookies` option to `false`. The cookie jar is accessible via
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.exists" id="apidoc.element.simplecrawler.queue.prototype.exists">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>exists
+        <span class="apidocSignatureSpan">(url, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exists = function (url, callback) {
+    if (this._scanIndex[url]) {
+        callback(null, 1);
+    } else {
+        callback(null, 0);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.filterItems" id="apidoc.element.simplecrawler.queue.prototype.filterItems">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>filterItems
+        <span class="apidocSignatureSpan">(comparator, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">filterItems = function (comparator, callback) {
+    var items = this.filter(function(queueItem) {
+        return compare(comparator, queueItem);
+    });
+
+    callback(null, items);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+comparator and a callback.
+
+```js
+crawler.queue.countItems({ fetched: true }, function(error, count) {
+    console.log(&#x22;The number of completed items is %d&#x22;, count);
+});
+
+crawler.queue.<span class="apidocCodeKeywordSpan">filterItems</span>({ status: &#x22;notfound&#x22; }, function(error, items) {
+    console.log(&#x22;These items returned 404 or 410 HTTP statuses&#x22;, items);
+});
+```
+
+The object comparator can also contain other objects, so you may filter queue
+items based on properties in their `stateData` object as well.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.freeze" id="apidoc.element.simplecrawler.queue.prototype.freeze">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>freeze
+        <span class="apidocSignatureSpan">(filename, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">freeze = function (filename, callback) {
+    var queue = this;
+
+    // Re-queue in-progress items before freezing...
+    queue.forEach(function(item) {
+        if (item.fetched !== true) {
+            item.status = &#x22;queued&#x22;;
+        }
+    });
+
+    fs.writeFile(filename, JSON.stringify(queue, null, 2), function(err) {
+        callback(err);
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+commences and stops is perfectly reasonable.
+
+Note that the methods themselves are asynchronous, so if you are going to exit
+the process after you do the freezing, make sure you wait for callback -
+otherwise you&#x27;ll get an empty file.
+
+```js
+crawler.queue.<span class="apidocCodeKeywordSpan">freeze</span>(&#x22;mysavedqueue.json&#x22;, function () {
+    process.exit();
+});
+
+crawler.queue.defrost(&#x22;mysavedqueue.json&#x22;);
+```
+
+## Cookies
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.get" id="apidoc.element.simplecrawler.queue.prototype.get">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>get
+        <span class="apidocSignatureSpan">(index, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (index, callback) {
+    var queue = this;
+
+    queue.getLength(function(error, length) {
+        if (error) {
+            callback(error);
+        } else if (index &#x3e;= length) {
+            callback(new RangeError(&#x22;Index was greater than the queue&#x27;s length&#x22;));
+        } else {
+            callback(null, queue[index]);
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Like any other web crawler, simplecrawler has a queue. It can be directly
+accessed through `crawler.queue` and implements an asynchronous interface for
+accessing queue items and statistics. There are several methods for interacting
+with the queue, the simplest being `crawler.queue.get`, which lets you get a
+queue item at a specific index in the queue.
+
+```js
+crawler.queue.<span class="apidocCodeKeywordSpan">get</span>(5, function (queueItem) {
+    // Do something with the queueItem
+});
+```
+
+*All queue method are in reality synchronous by default, but simplecrawler is
+built to be able to use different queues that implement the same interface, and
+those implementations can be asynchronous - which means they could eg. be backed
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.getLength" id="apidoc.element.simplecrawler.queue.prototype.getLength">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>getLength
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLength = function (callback) {
+    callback(null, this.length);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    var originalEmit = crawler.emit;
+    crawler.emit = function(evtName, queueItem) {
+        crawler.queue.countItems({ fetched: true }, function(err, completeCount) {
+            if (err) {
+throw err;
+            }
+
+            crawler.queue.<span class="apidocCodeKeywordSpan">getLength</span>(function(err, length) {
+if (err) {
+    throw err;
+}
+
+console.log(&#x22;fetched %d of %d — %d open requests, %d open listeners&#x22;,
+    completeCount,
+    length,
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.max" id="apidoc.element.simplecrawler.queue.prototype.max">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>max
+        <span class="apidocSignatureSpan">(statisticName, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">max = function (statisticName, callback) {
+    var maximum = 0,
+        queue = this;
+
+    if (queue._allowedStatistics.indexOf(statisticName) === -1) {
+        return callback(new Error(&#x22;Invalid statistic&#x22;));
+    }
+
+    queue.forEach(function(item) {
+        if (item.fetched &#x26;&#x26; item.stateData[statisticName] &#x3e; maximum) {
+            maximum = item.stateData[statisticName];
+        }
+    });
+
+    callback(null, maximum);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+* `actualDataSize`
+
+You can get the maximum, minimum, and average values for each with the
+`crawler.queue.max`, `crawler.queue.min`, and `crawler.queue.avg` functions
+respectively.
+
+```js
+crawler.queue.<span class="apidocCodeKeywordSpan">max</span>(&#x22;requestLatency&#x22;, function(error, max) {
+console.log(&#x22;The maximum request latency was %dms.&#x22;, max);
+});
+crawler.queue.min(&#x22;downloadTime&#x22;, function(error, min) {
+console.log(&#x22;The minimum download time was %dms.&#x22;, min);
+});
+crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
+console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.min" id="apidoc.element.simplecrawler.queue.prototype.min">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>min
+        <span class="apidocSignatureSpan">(statisticName, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">min = function (statisticName, callback) {
+    var minimum = Infinity,
+        queue = this;
+
+    if (queue._allowedStatistics.indexOf(statisticName) === -1) {
+        return callback(new Error(&#x22;Invalid statistic&#x22;));
+    }
+
+    queue.forEach(function(item) {
+        if (item.fetched &#x26;&#x26; item.stateData[statisticName] &#x3c; minimum) {
+            minimum = item.stateData[statisticName];
+        }
+    });
+
+    callback(null, minimum === Infinity ? 0 : minimum);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+`crawler.queue.max`, `crawler.queue.min`, and `crawler.queue.avg` functions
+respectively.
+
+```js
+crawler.queue.max(&#x22;requestLatency&#x22;, function(error, max) {
+    console.log(&#x22;The maximum request latency was %dms.&#x22;, max);
+});
+crawler.queue.<span class="apidocCodeKeywordSpan">min</span>(&#x22;downloadTime&#x22;, function(error, min) {
+    console.log(&#x22;The minimum download time was %dms.&#x22;, min);
+});
+crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
+    console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.oldestUnfetchedItem" id="apidoc.element.simplecrawler.queue.prototype.oldestUnfetchedItem">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>oldestUnfetchedItem
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">oldestUnfetchedItem = function (callback) {
+    var queue = this;
+
+    for (var i = queue._oldestUnfetchedIndex; i &#x3c; queue.length; i++) {
+        if (queue[i].status === &#x22;queued&#x22;) {
+            queue._oldestUnfetchedIndex = i;
+            callback(null, queue[i]);
+            return;
+        }
+    }
+
+    // When no unfetched queue items remain, we previously called back with an
+    // error, but since it&#x27;s not really an error condition, we opted to just
+    // call back with (null, null) instead
+    callback(null, null);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.simplecrawler.queue.prototype.update" id="apidoc.element.simplecrawler.queue.prototype.update">
+        function <span class="apidocSignatureSpan">simplecrawler.queue.prototype.</span>update
+        <span class="apidocSignatureSpan">(id, updates, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">update = function (id, updates, callback) {
+    var queue = this,
+        queueItem;
+
+    for (var i = 0; i &#x3c; queue.length; i++) {
+        if (queue[i].id === id) {
+            queueItem = queue[i];
+            break;
+        }
+    }
+
+    if (!queueItem) {
+        callback(new Error(&#x22;No queueItem found with that URL&#x22;));
+    } else {
+        deepAssign(queueItem, updates);
+        callback(null, queueItem);
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Trim whitespace. If no path is present - assume index.html.
+var sanitisedPath = path.length ? path.replace(/\s*$/ig, &#x22;&#x22;) : &#x22;index.html&#x22;;
+var headers = queueObject.stateData.headers, sanitisedPathParts;
+
+if (sanitisedPath.match(/\?/)) {
+    sanitisedPathParts = sanitisedPath.split(/\?/g);
+    var resource = sanitisedPathParts.shift();
+    var hashedQS = crypto.createHash(&#x22;sha1&#x22;).<span class="apidocCodeKeywordSpan">update</span>(sanitisedPathParts.join
+(&#x22;?&#x22;)).digest(&#x22;hex&#x22;);
+    sanitisedPath = resource + &#x22;?&#x22; + hashedQS;
+}
+
+pathStack = sanitisedPath.split(/\//g);
+pathStack = pathStack.map(function(pathChunk) {
+    if (pathChunk.length &#x3e;= 250) {
+        return crypto.createHash(&#x22;sha1&#x22;).update(pathChunk).digest(&#x22;hex&#x22;);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
