@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/cgiffard/node-simplecrawler"
-
-    >simplecrawler (v1.1.1)</a>
+    <a href="https://github.com/cgiffard/node-simplecrawler">simplecrawler (v1.1.1)</a>
 </h1>
 <h4>Very straightforward, event driven web crawler. Features a flexible queue interface and a basic cache mechanism with extensible backend.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.simplecrawler">module simplecrawler</a><ol>
 
@@ -733,13 +726,13 @@
         return new Crawler(initialURL);
     }
 
-    if (arguments.length &#x3e; 1) {
-        throw new Error(&#x22;Since 1.0.0, simplecrawler takes a single URL when initialized. Protocol, hostname, port and path are inferred
- from that argument.&#x22;);
+    if (arguments.length &gt; 1) {
+        throw new Error("Since 1.0.0, simplecrawler takes a single URL when initialized. Protocol, hostname, port and path are inferred
+ from that argument.");
     }
 
-    if (typeof initialURL !== &#x22;string&#x22;) {
-        throw new Error(&#x22;The crawler needs a URL string to know where to start crawling&#x22;);
+    if (typeof initialURL !== "string") {
+        throw new Error("The crawler needs a URL string to know where to start crawling");
     }
 
     EventEmitter.call(this);
@@ -770,31 +763,31 @@
 
     /**
      * Maximum request concurrency. If necessary, simplecrawler will increase
-     * node&#x27;s http agent maxSockets value to match this setting.
+     * node's http agent maxSockets value to match this setting.
      * @type {Number}
      */
     this.maxConcurrency = 5;
 
     /**
-     * Maximum time we&#x27;ll wait for headers
+     * Maximum time we'll wait for headers
      * @type {Number}
      */
     this.timeout = 300000; // 5 minutes
 
     /**
-     * Maximum time we&#x27;ll wait for async listeners
+     * Maximum time we'll wait for async listeners
      * @type {Number}
      */
     this.listenerTTL = 10000; // 10 seconds
 
     /**
-     * Crawler&#x27;s user agent string
+     * Crawler's user agent string
      * @type {String}
-     * @default &#x22;Node/simplecrawler &#x3c;version&#x3e; (https://github.com/cgiffard/node-simplecrawler)&#x22;
+     * @default "Node/simplecrawler &lt;version&gt; (https://github.com/cgiffard/node-simplecrawler)"
      */
     this.userAgent =
-        &#x22;Node/&#x22; + packageJson.name + &#x22; &#x22; + packageJson.version +
-        &#x22; (&#x22; + packageJson.repository.url + &#x22;)&#x22;;
+        "Node/" + packageJson.name + " " + packageJson.version +
+        " (" + packageJson.repository.url + ")";
 
     /**
      * Queue for requests. The crawler can use any implementation so long as it
@@ -805,7 +798,7 @@
 
     /**
      * Controls whether the crawler respects the robots.txt rules of any domain.
-     * This is done both with regards to the robots.txt file, and `&#x3c;meta&#x3e;` tags
+     * This is done both with regards to the robots.txt file, and `&lt;meta&gt;` tags
      * that specify a `nofollow` value for robots. The latter only applies if
      * the default {@link Crawler#discoverResources} method is used, though.
      * @type {Boolean}
@@ -833,13 +826,13 @@
      * standard JavaScript strings using the {@link https://www.npmjs.com/package/iconv-lite|iconv-lite}
      * module before emitted in the {@link Crawler#event:fetchcomplete} event.
      * The character encoding is interpreted from the Content-Type header
-     * firstly, and secondly from any `&#x3c;meta charset=&#x22;xxx&#x22; /&#x3e;` tags.
+     * firstly, and secondly from any `&lt;meta charset="xxx" /&gt;` tags.
      * @type {Boolean}
      */
     this.decodeResponses = false;
 
     /**
-     * Controls whether the crawler fetches only URL&#x27;s where the hostname
+     * Controls whether the crawler fetches only URL's where the hostname
      * matches {@link Crawler#host}. Unless you want to be crawling the entire
      * internet, I would recommend leaving this on!
      * @type {Boolean}
@@ -847,7 +840,7 @@
     this.filterByDomain = true;
 
     /**
-     * Controls whether URL&#x27;s that points to a subdomain of {@link Crawler#host}
+     * Controls whether URL's that points to a subdomain of {@link Crawler#host}
      * should also be fetched.
      * @type {Boolean}
      */
@@ -867,7 +860,7 @@
     <li>description and source-code<pre class="apidocCodePre">function Cache(cacheLoadParameter, cacheBackend) {
 
     // Ensure parameters are how we want them...
-    cacheBackend = typeof cacheBackend === &#x22;object&#x22; ? cacheBackend : FilesystemBackend;
+    cacheBackend = typeof cacheBackend === "object" ? cacheBackend : FilesystemBackend;
     cacheLoadParameter = cacheLoadParameter instanceof Array ? cacheLoadParameter : [cacheLoadParameter];
 
     // Now we can just run the factory.
@@ -884,12 +877,12 @@
     file system cache like this:
 
     ```js
-    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>(&#x27;pathToCacheDirectory&#x27;);
+    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>('pathToCacheDirectory');
     ```
 
 * `crawler.useProxy=false` -
     The crawler should use an HTTP proxy to make its requests.
-* `crawler.proxyHostname=&#x22;127.0.0.1&#x22;` -
+* `crawler.proxyHostname="127.0.0.1"` -
     The hostname of the proxy to use for requests.
 * `crawler.proxyPort=8123` -
 ...</pre></li>
@@ -928,9 +921,9 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">crawl = function () {
     throw new Error(
-        &#x22;Crawler.crawl is deprecated as of version 1.0.0! &#x22; +
-        &#x22;You can now pass a single URL directly to the constructor. &#x22; +
-        &#x22;See the documentation for more details!&#x22;
+        "Crawler.crawl is deprecated as of version 1.0.0! " +
+        "You can now pass a single URL directly to the constructor. " +
+        "See the documentation for more details!"
     );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -952,13 +945,13 @@
         return new Crawler(initialURL);
     }
 
-    if (arguments.length &#x3e; 1) {
-        throw new Error(&#x22;Since 1.0.0, simplecrawler takes a single URL when initialized. Protocol, hostname, port and path are inferred
- from that argument.&#x22;);
+    if (arguments.length &gt; 1) {
+        throw new Error("Since 1.0.0, simplecrawler takes a single URL when initialized. Protocol, hostname, port and path are inferred
+ from that argument.");
     }
 
-    if (typeof initialURL !== &#x22;string&#x22;) {
-        throw new Error(&#x22;The crawler needs a URL string to know where to start crawling&#x22;);
+    if (typeof initialURL !== "string") {
+        throw new Error("The crawler needs a URL string to know where to start crawling");
     }
 
     EventEmitter.call(this);
@@ -989,31 +982,31 @@
 
     /**
      * Maximum request concurrency. If necessary, simplecrawler will increase
-     * node&#x27;s http agent maxSockets value to match this setting.
+     * node's http agent maxSockets value to match this setting.
      * @type {Number}
      */
     this.maxConcurrency = 5;
 
     /**
-     * Maximum time we&#x27;ll wait for headers
+     * Maximum time we'll wait for headers
      * @type {Number}
      */
     this.timeout = 300000; // 5 minutes
 
     /**
-     * Maximum time we&#x27;ll wait for async listeners
+     * Maximum time we'll wait for async listeners
      * @type {Number}
      */
     this.listenerTTL = 10000; // 10 seconds
 
     /**
-     * Crawler&#x27;s user agent string
+     * Crawler's user agent string
      * @type {String}
-     * @default &#x22;Node/simplecrawler &#x3c;version&#x3e; (https://github.com/cgiffard/node-simplecrawler)&#x22;
+     * @default "Node/simplecrawler &lt;version&gt; (https://github.com/cgiffard/node-simplecrawler)"
      */
     this.userAgent =
-        &#x22;Node/&#x22; + packageJson.name + &#x22; &#x22; + packageJson.version +
-        &#x22; (&#x22; + packageJson.repository.url + &#x22;)&#x22;;
+        "Node/" + packageJson.name + " " + packageJson.version +
+        " (" + packageJson.repository.url + ")";
 
     /**
      * Queue for requests. The crawler can use any implementation so long as it
@@ -1024,7 +1017,7 @@
 
     /**
      * Controls whether the crawler respects the robots.txt rules of any domain.
-     * This is done both with regards to the robots.txt file, and `&#x3c;meta&#x3e;` tags
+     * This is done both with regards to the robots.txt file, and `&lt;meta&gt;` tags
      * that specify a `nofollow` value for robots. The latter only applies if
      * the default {@link Crawler#discoverResources} method is used, though.
      * @type {Boolean}
@@ -1052,13 +1045,13 @@
      * standard JavaScript strings using the {@link https://www.npmjs.com/package/iconv-lite|iconv-lite}
      * module before emitted in the {@link Crawler#event:fetchcomplete} event.
      * The character encoding is interpreted from the Content-Type header
-     * firstly, and secondly from any `&#x3c;meta charset=&#x22;xxx&#x22; /&#x3e;` tags.
+     * firstly, and secondly from any `&lt;meta charset="xxx" /&gt;` tags.
      * @type {Boolean}
      */
     this.decodeResponses = false;
 
     /**
-     * Controls whether the crawler fetches only URL&#x27;s where the hostname
+     * Controls whether the crawler fetches only URL's where the hostname
      * matches {@link Crawler#host}. Unless you want to be crawling the entire
      * internet, I would recommend leaving this on!
      * @type {Boolean}
@@ -1066,7 +1059,7 @@
     this.filterByDomain = true;
 
     /**
-     * Controls whether URL&#x27;s that points to a subdomain of {@link Crawler#host}
+     * Controls whether URL's that points to a subdomain of {@link Crawler#host}
      * should also be fetched.
      * @type {Boolean}
      */
@@ -1093,20 +1086,20 @@
      * @private
      * @type {Number}
      */
-</span>    Object.defineProperty(this, &#x22;_oldestUnfetchedIndex&#x22;, {
+</span>    Object.defineProperty(this, "_oldestUnfetchedIndex", {
         enumerable: false,
         writable: true,
         value: 0
     });
 
     /**
-     * Serves as a cache for what URL&#x27;s have been fetched. Keys are URL&#x27;s,
+     * Serves as a cache for what URL's have been fetched. Keys are URL's,
      * values are booleans.
      * @name FetchQueue._scanIndex
      * @private
      * @type {Object}
      */
-    Object.defineProperty(this, &#x22;_scanIndex&#x22;, {
+    Object.defineProperty(this, "_scanIndex", {
         enumerable: false,
         writable: true,
         value: {}
@@ -1119,15 +1112,15 @@
      * @name FetchQueue._allowedStatistics
      * @type {Array}
      */
-    Object.defineProperty(this, &#x22;_allowedStatistics&#x22;, {
+    Object.defineProperty(this, "_allowedStatistics", {
         enumerable: false,
         writable: true,
         value: [
-            &#x22;actualDataSize&#x22;,
-            &#x22;contentLength&#x22;,
-            &#x22;downloadTime&#x22;,
-            &#x22;requestLatency&#x22;,
-            &#x22;requestTime&#x22;
+            "actualDataSize",
+            "contentLength",
+            "downloadTime",
+            "requestLatency",
+            "requestTime"
         ]
     });
 }</pre></li>
@@ -1174,7 +1167,7 @@
     <li>description and source-code<pre class="apidocCodePre">function Cache(cacheLoadParameter, cacheBackend) {
 
     // Ensure parameters are how we want them...
-    cacheBackend = typeof cacheBackend === &#x22;object&#x22; ? cacheBackend : FilesystemBackend;
+    cacheBackend = typeof cacheBackend === "object" ? cacheBackend : FilesystemBackend;
     cacheLoadParameter = cacheLoadParameter instanceof Array ? cacheLoadParameter : [cacheLoadParameter];
 
     // Now we can just run the factory.
@@ -1191,12 +1184,12 @@
     file system cache like this:
 
     ```js
-    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>(&#x27;pathToCacheDirectory&#x27;);
+    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>('pathToCacheDirectory');
     ```
 
 * `crawler.useProxy=false` -
     The crawler should use an HTTP proxy to make its requests.
-* `crawler.proxyHostname=&#x22;127.0.0.1&#x22;` -
+* `crawler.proxyHostname="127.0.0.1"` -
     The hostname of the proxy to use for requests.
 * `crawler.proxyPort=8123` -
 ...</pre></li>
@@ -1214,7 +1207,7 @@
     <li>description and source-code<pre class="apidocCodePre">function Cache(cacheLoadParameter, cacheBackend) {
 
     // Ensure parameters are how we want them...
-    cacheBackend = typeof cacheBackend === &#x22;object&#x22; ? cacheBackend : FilesystemBackend;
+    cacheBackend = typeof cacheBackend === "object" ? cacheBackend : FilesystemBackend;
     cacheLoadParameter = cacheLoadParameter instanceof Array ? cacheLoadParameter : [cacheLoadParameter];
 
     // Now we can just run the factory.
@@ -1287,7 +1280,7 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">setCacheData = function (queueObject, data, callback) {
     this.datastore.setItem(queueObject, data, callback);
-    this.emit(&#x22;setcache&#x22;, queueObject, data);
+    this.emit("setcache", queueObject, data);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1336,14 +1329,14 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Cookie = function (name, value, expires, path, domain, httponly) {
     if (!name) {
-        throw new Error(&#x22;A name is required to create a cookie.&#x22;);
+        throw new Error("A name is required to create a cookie.");
     }
 
     // Parse date to timestamp - consider it never expiring if timestamp is not
     // passed to the function
     if (expires) {
 
-        if (typeof expires !== &#x22;number&#x22;) {
+        if (typeof expires !== "number") {
             expires = (new Date(expires)).getTime();
         }
 
@@ -1352,10 +1345,10 @@
     }
 
     this.name = name;
-    this.value = value || &#x22;&#x22;;
+    this.value = value || "";
     this.expires = expires;
-    this.path = path || &#x22;/&#x22;;
-    this.domain = domain || &#x22;*&#x22;;
+    this.path = path || "/";
+    this.domain = domain || "*";
     this.httponly = Boolean(httponly);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1393,7 +1386,7 @@
     <li>description and source-code<pre class="apidocCodePre">add = function (name, value, expiry, path, domain, httponly, callback) {
     var existingIndex = -1, newCookie;
 
-    if (arguments.length &#x3e; 1) {
+    if (arguments.length &gt; 1) {
         newCookie = new Cookie(name, value, expiry, path, domain, httponly);
     } else if (name instanceof Cookie) {
         newCookie = name;
@@ -1403,7 +1396,7 @@
 
     // Are we updating an existing cookie or adding a new one?
     this.cookies.forEach(function(cookie, index) {
-        if (cookie.name === newCookie.name &#x26;&#x26; cookie.matchDomain(newCookie.domain)) {
+        if (cookie.name === newCookie.name &amp;&amp; cookie.matchDomain(newCookie.domain)) {
             existingIndex = index;
         }
     });
@@ -1419,7 +1412,7 @@
      * @event CookieJar#addcookie
      * @param {Cookie} cookie The cookie that has been added
      */
-</span>    this.emit(&#x22;addcookie&#x22;, newCookie);
+</span>    this.emit("addcookie", newCookie);
 
     if (callback instanceof Function) {
         callback(null, newCookie);
@@ -1476,11 +1469,11 @@ return jar;
 // request and the next
 jar: true
     }, function (error, response, body) {
-// Start by saving the cookies. We&#x27;ll likely be assigned a session cookie
+// Start by saving the cookies. We'll likely be assigned a session cookie
 // straight off the bat, and then the server will remember the fact that
-// this session is logged in as user &#x22;iamauser&#x22; after we&#x27;ve successfully
+// this session is logged in as user "iamauser" after we've successfully
 // logged in
-crawler.cookies.<span class="apidocCodeKeywordSpan">addFromHeaders</span>(response.headers[&#x22;set-cookie&#x22;]);
+crawler.cookies.<span class="apidocCodeKeywordSpan">addFromHeaders</span>(response.headers["set-cookie"]);
 
 // We want to get the names and values of all relevant inputs on the page,
 // so that any CSRF tokens or similar things are included in the POST
@@ -1502,13 +1495,13 @@ var $ = cheerio.load(body),
     <ul>
     <li>description and source-code<pre class="apidocCodePre">get = function (name, domain, callback) {
     var cookies = this.cookies.filter(function(cookie) {
-        // If the names don&#x27;t match, we&#x27;re not returning this cookie
-        if (Boolean(name) &#x26;&#x26; cookie.name !== name) {
+        // If the names don't match, we're not returning this cookie
+        if (Boolean(name) &amp;&amp; cookie.name !== name) {
             return false;
         }
 
-        // If the domains don&#x27;t match, we&#x27;re not returning this cookie
-        if (Boolean(domain) &#x26;&#x26; !cookie.matchDomain(domain)) {
+        // If the domains don't match, we're not returning this cookie
+        if (Boolean(domain) &amp;&amp; !cookie.matchDomain(domain)) {
             return false;
         }
 
@@ -1554,7 +1547,7 @@ those implementations can be asynchronous - which means they could eg. be backed
         if (cookie.isExpired()) {
             return false;
         }
-        if (!domain &#x26;&#x26; !path) {
+        if (!domain &amp;&amp; !path) {
             return true;
         }
         if (domain) {
@@ -1582,7 +1575,7 @@ those implementations can be asynchronous - which means they could eg. be backed
 * @return {String} Returns stringified versions of all cookies in the jar in a newline separated string
 */
 CookieJar.prototype.toString = function() {
-   return this.<span class="apidocCodeKeywordSpan">getAsHeader</span>().join(&#x22;\n&#x22;);
+   return this.<span class="apidocCodeKeywordSpan">getAsHeader</span>().join("\n");
 };
 
 
@@ -1607,13 +1600,13 @@ CookieJar.prototype.toString = function() {
         jar = this;
 
     jar.cookies.forEach(function(cookie, index) {
-        // If the names don&#x27;t match, we&#x27;re not removing this cookie
-        if (Boolean(name) &#x26;&#x26; cookie.name !== name) {
+        // If the names don't match, we're not removing this cookie
+        if (Boolean(name) &amp;&amp; cookie.name !== name) {
             return false;
         }
 
-        // If the domains don&#x27;t match, we&#x27;re not removing this cookie
-        if (Boolean(domain) &#x26;&#x26; !cookie.matchDomain(domain)) {
+        // If the domains don't match, we're not removing this cookie
+        if (Boolean(domain) &amp;&amp; !cookie.matchDomain(domain)) {
             return false;
         }
 
@@ -1626,7 +1619,7 @@ CookieJar.prototype.toString = function() {
      * @event CookieJar#removecookie
      * @param {Cookie[]} cookie The cookies that have been removed
      */
-</span>    jar.emit(&#x22;removecookie&#x22;, cookiesRemoved);
+</span>    jar.emit("removecookie", cookiesRemoved);
 
     if (callback instanceof Function) {
         callback(null, cookiesRemoved);
@@ -1647,7 +1640,7 @@ CookieJar.prototype.toString = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return this.getAsHeader().join(&#x22;\n&#x22;);
+    return this.getAsHeader().join("\n");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 browser, like phantomJS.
@@ -1657,10 +1650,10 @@ discovery of only link tags using cheerio.
 
 ```js
 crawler.discoverResources = function(buffer, queueItem) {
-    var $ = cheerio.load(buffer.<span class="apidocCodeKeywordSpan">toString</span>(&#x22;utf8&#x22;));
+    var $ = cheerio.load(buffer.<span class="apidocCodeKeywordSpan">toString</span>("utf8"));
 
-    return $(&#x22;a[href]&#x22;).map(function () {
-        return $(this).attr(&#x22;href&#x22;);
+    return $("a[href]").map(function () {
+        return $(this).attr("href");
     }).get();
 };
 ```
@@ -1688,13 +1681,13 @@ crawler.discoverResources = function(buffer, queueItem) {
         return new Crawler(initialURL);
     }
 
-    if (arguments.length &#x3e; 1) {
-        throw new Error(&#x22;Since 1.0.0, simplecrawler takes a single URL when initialized. Protocol, hostname, port and path are inferred
- from that argument.&#x22;);
+    if (arguments.length &gt; 1) {
+        throw new Error("Since 1.0.0, simplecrawler takes a single URL when initialized. Protocol, hostname, port and path are inferred
+ from that argument.");
     }
 
-    if (typeof initialURL !== &#x22;string&#x22;) {
-        throw new Error(&#x22;The crawler needs a URL string to know where to start crawling&#x22;);
+    if (typeof initialURL !== "string") {
+        throw new Error("The crawler needs a URL string to know where to start crawling");
     }
 
     EventEmitter.call(this);
@@ -1725,31 +1718,31 @@ crawler.discoverResources = function(buffer, queueItem) {
 
     /**
      * Maximum request concurrency. If necessary, simplecrawler will increase
-     * node&#x27;s http agent maxSockets value to match this setting.
+     * node's http agent maxSockets value to match this setting.
      * @type {Number}
      */
     this.maxConcurrency = 5;
 
     /**
-     * Maximum time we&#x27;ll wait for headers
+     * Maximum time we'll wait for headers
      * @type {Number}
      */
     this.timeout = 300000; // 5 minutes
 
     /**
-     * Maximum time we&#x27;ll wait for async listeners
+     * Maximum time we'll wait for async listeners
      * @type {Number}
      */
     this.listenerTTL = 10000; // 10 seconds
 
     /**
-     * Crawler&#x27;s user agent string
+     * Crawler's user agent string
      * @type {String}
-     * @default &#x22;Node/simplecrawler &#x3c;version&#x3e; (https://github.com/cgiffard/node-simplecrawler)&#x22;
+     * @default "Node/simplecrawler &lt;version&gt; (https://github.com/cgiffard/node-simplecrawler)"
      */
     this.userAgent =
-        &#x22;Node/&#x22; + packageJson.name + &#x22; &#x22; + packageJson.version +
-        &#x22; (&#x22; + packageJson.repository.url + &#x22;)&#x22;;
+        "Node/" + packageJson.name + " " + packageJson.version +
+        " (" + packageJson.repository.url + ")";
 
     /**
      * Queue for requests. The crawler can use any implementation so long as it
@@ -1760,7 +1753,7 @@ crawler.discoverResources = function(buffer, queueItem) {
 
     /**
      * Controls whether the crawler respects the robots.txt rules of any domain.
-     * This is done both with regards to the robots.txt file, and `&#x3c;meta&#x3e;` tags
+     * This is done both with regards to the robots.txt file, and `&lt;meta&gt;` tags
      * that specify a `nofollow` value for robots. The latter only applies if
      * the default {@link Crawler#discoverResources} method is used, though.
      * @type {Boolean}
@@ -1788,13 +1781,13 @@ crawler.discoverResources = function(buffer, queueItem) {
      * standard JavaScript strings using the {@link https://www.npmjs.com/package/iconv-lite|iconv-lite}
      * module before emitted in the {@link Crawler#event:fetchcomplete} event.
      * The character encoding is interpreted from the Content-Type header
-     * firstly, and secondly from any `&#x3c;meta charset=&#x22;xxx&#x22; /&#x3e;` tags.
+     * firstly, and secondly from any `&lt;meta charset="xxx" /&gt;` tags.
      * @type {Boolean}
      */
     this.decodeResponses = false;
 
     /**
-     * Controls whether the crawler fetches only URL&#x27;s where the hostname
+     * Controls whether the crawler fetches only URL's where the hostname
      * matches {@link Crawler#host}. Unless you want to be crawling the entire
      * internet, I would recommend leaving this on!
      * @type {Boolean}
@@ -1802,7 +1795,7 @@ crawler.discoverResources = function(buffer, queueItem) {
     this.filterByDomain = true;
 
     /**
-     * Controls whether URL&#x27;s that points to a subdomain of {@link Crawler#host}
+     * Controls whether URL's that points to a subdomain of {@link Crawler#host}
      * should also be fetched.
      * @type {Boolean}
      */
@@ -1822,7 +1815,7 @@ crawler.discoverResources = function(buffer, queueItem) {
     <li>description and source-code<pre class="apidocCodePre">function Cache(cacheLoadParameter, cacheBackend) {
 
     // Ensure parameters are how we want them...
-    cacheBackend = typeof cacheBackend === &#x22;object&#x22; ? cacheBackend : FilesystemBackend;
+    cacheBackend = typeof cacheBackend === "object" ? cacheBackend : FilesystemBackend;
     cacheLoadParameter = cacheLoadParameter instanceof Array ? cacheLoadParameter : [cacheLoadParameter];
 
     // Now we can just run the factory.
@@ -1839,12 +1832,12 @@ crawler.discoverResources = function(buffer, queueItem) {
     file system cache like this:
 
     ```js
-    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>(&#x27;pathToCacheDirectory&#x27;);
+    crawler.cache = new Crawler.<span class="apidocCodeKeywordSpan">cache</span>('pathToCacheDirectory');
     ```
 
 * `crawler.useProxy=false` -
     The crawler should use an HTTP proxy to make its requests.
-* `crawler.proxyHostname=&#x22;127.0.0.1&#x22;` -
+* `crawler.proxyHostname="127.0.0.1"` -
     The hostname of the proxy to use for requests.
 * `crawler.proxyPort=8123` -
 ...</pre></li>
@@ -1861,9 +1854,9 @@ crawler.discoverResources = function(buffer, queueItem) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">crawl = function () {
     throw new Error(
-        &#x22;Crawler.crawl is deprecated as of version 1.0.0! &#x22; +
-        &#x22;You can now pass a single URL directly to the constructor. &#x22; +
-        &#x22;See the documentation for more details!&#x22;
+        "Crawler.crawl is deprecated as of version 1.0.0! " +
+        "You can now pass a single URL directly to the constructor. " +
+        "See the documentation for more details!"
     );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1888,20 +1881,20 @@ crawler.discoverResources = function(buffer, queueItem) {
      * @private
      * @type {Number}
      */
-</span>    Object.defineProperty(this, &#x22;_oldestUnfetchedIndex&#x22;, {
+</span>    Object.defineProperty(this, "_oldestUnfetchedIndex", {
         enumerable: false,
         writable: true,
         value: 0
     });
 
     /**
-     * Serves as a cache for what URL&#x27;s have been fetched. Keys are URL&#x27;s,
+     * Serves as a cache for what URL's have been fetched. Keys are URL's,
      * values are booleans.
      * @name FetchQueue._scanIndex
      * @private
      * @type {Object}
      */
-    Object.defineProperty(this, &#x22;_scanIndex&#x22;, {
+    Object.defineProperty(this, "_scanIndex", {
         enumerable: false,
         writable: true,
         value: {}
@@ -1914,15 +1907,15 @@ crawler.discoverResources = function(buffer, queueItem) {
      * @name FetchQueue._allowedStatistics
      * @type {Array}
      */
-    Object.defineProperty(this, &#x22;_allowedStatistics&#x22;, {
+    Object.defineProperty(this, "_allowedStatistics", {
         enumerable: false,
         writable: true,
         value: [
-            &#x22;actualDataSize&#x22;,
-            &#x22;contentLength&#x22;,
-            &#x22;downloadTime&#x22;,
-            &#x22;requestLatency&#x22;,
-            &#x22;requestTime&#x22;
+            "actualDataSize",
+            "contentLength",
+            "downloadTime",
+            "requestLatency",
+            "requestTime"
         ]
     });
 }</pre></li>
@@ -1960,7 +1953,7 @@ crawler.discoverResources = function(buffer, queueItem) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">addDownloadCondition = function (callback) {
     if (!(callback instanceof Function)) {
-        throw new Error(&#x22;Download condition must be a function&#x22;);
+        throw new Error("Download condition must be a function");
     }
 
     this._downloadConditions.push(callback);
@@ -1977,8 +1970,8 @@ used to remove the condition later.
 var conditionID = myCrawler.<span class="apidocCodeKeywordSpan">addDownloadCondition</span>(function(queueItem, response, callback
 ) {
     callback(null,
-        queueItem.stateData.contentType === &#x22;image/png&#x22; &#x26;&#x26;
-        queueItem.stateData.contentLength &#x3c; 5 * 1000 * 1000
+        queueItem.stateData.contentType === "image/png" &amp;&amp;
+        queueItem.stateData.contentLength &lt; 5 * 1000 * 1000
     );
 });
 ```
@@ -1996,7 +1989,7 @@ var conditionID = myCrawler.<span class="apidocCodeKeywordSpan">addDownloadCondi
     <ul>
     <li>description and source-code<pre class="apidocCodePre">addFetchCondition = function (callback) {
     if (!(callback instanceof Function)) {
-        throw new Error(&#x22;Fetch condition must be a function&#x22;);
+        throw new Error("Fetch condition must be a function");
     }
 
     this._fetchConditions.push(callback);
@@ -2004,7 +1997,7 @@ var conditionID = myCrawler.<span class="apidocCodeKeywordSpan">addDownloadCondi
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-This example fetch condition prevents URL&#x27;s ending in `.pdf` from being
+This example fetch condition prevents URL's ending in `.pdf` from being
 downloaded. Adding a fetch condition assigns it an ID, which the
 `addFetchCondition` function returns. You can use this ID to remove the
 condition later.
@@ -2048,20 +2041,20 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
             // Ensure URL is whole and complete
             try {
                 URL = uri(URL)
-                    .absoluteTo(queueItem.url || &#x22;&#x22;)
+                    .absoluteTo(queueItem.url || "")
                     .normalize()
                     .href();
             } catch (e) {
-                // But if URI.js couldn&#x27;t parse it - nobody can!
+                // But if URI.js couldn't parse it - nobody can!
                 return list;
             }
 
-            // If we hit an empty item, don&#x27;t return it
+            // If we hit an empty item, don't return it
             if (!URL.length) {
                 return list;
             }
 
-            // If we don&#x27;t support the protocol in question
+            // If we don't support the protocol in question
             if (!crawler.protocolSupported(URL)) {
                 return list;
             }
@@ -2093,7 +2086,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     <li>description and source-code<pre class="apidocCodePre">crawl = function () {
     var crawler = this;
 
-    if (crawler._openRequests.length &#x3e;= crawler.maxConcurrency ||
+    if (crawler._openRequests.length &gt;= crawler.maxConcurrency ||
         crawler.fetchingRobotsTxt) {
         return crawler;
     }
@@ -2110,11 +2103,11 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                 port: url.port()
             }).href();
 
-            if (crawler.respectRobotsTxt &#x26;&#x26; crawler._touchedHosts.indexOf(host) === -1) {
+            if (crawler.respectRobotsTxt &amp;&amp; crawler._touchedHosts.indexOf(host) === -1) {
                 crawler._touchedHosts.push(host);
                 crawler.fetchingRobotsTxt = true;
 
-                var robotsTxtUrl = uri(host).pathname(&#x22;/robots.txt&#x22;).href();
+                var robotsTxtUrl = uri(host).pathname("/robots.txt").href();
 
                 crawler.getRobotsTxt(robotsTxtUrl, function(error, robotsTxtUrl, robotsTxtBody) {
                     if (error) {
@@ -2123,7 +2116,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                          * @event Crawler#robotstxterror
                          * @param {Error} error The error returned from {@link Crawler#getRobotsTxt}
                          */
-</span>                        crawler.emit(&#x22;robotstxterror&#x22;, error);
+</span>                        crawler.emit("robotstxterror", error);
                     } else {
                         crawler._robotsTxts.push(robotsTxtParser(robotsTxtUrl, robotsTxtBody));
                     }
@@ -2131,16 +2124,16 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                     crawler.fetchingRobotsTxt = false;
 
                     // It could be that the first URL we queued for any particular
-                    // host is in fact disallowed, so we double check once we&#x27;ve
+                    // host is in fact disallowed, so we double check once we've
                     // fetched the robots.txt
                     if (crawler.urlIsAllowed(queueItem.url)) {
                         crawler.fetchQueueItem(queueItem);
                     } else {
                         crawler.queue.update(queueItem.id, {
                             fetched: true,
-                            status: &#x22;disallowed&#x22;
+                            status: "disallowed"
                         }, function(error, queueItem) {
-                            crawler.emit(&#x22;fetchdisallowed&#x22;, queueItem);
+                            crawler.emit("fetchdisallowed", queueItem);
                         });
                     }
                 });
@@ -2148,7 +2141,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
 
                 crawler.fetchQueueItem(queueItem);
             }
-        } else if (!crawler._openRequests.length &#x26;&#x26; !crawler._openListeners) {
+        } else if (!crawler._openRequests.length &amp;&amp; !crawler._openListeners) {
 
             crawler.queue.countItems({ fetched: true }, function(err, completeCount) {
                 if (err) {
@@ -2165,7 +2158,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                          * Fired when the crawl has completed - all resources in the queue have been dealt with
                          * @event Crawler#complete
                          */
-                        crawler.emit(&#x22;complete&#x22;);
+                        crawler.emit("complete");
                         crawler.stop();
                     }
                 });
@@ -2188,12 +2181,12 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">decodeBuffer = function (buffer, contentTypeHeader) {
-    contentTypeHeader = contentTypeHeader || &#x22;&#x22;;
+    contentTypeHeader = contentTypeHeader || "";
 
-    var embeddedEncoding = /&#x3c;meta[^&#x3e;]*charset\s*=\s*[&#x22;&#x27;]?([\w\-]*)/i.exec(buffer.toString(undefined, 0, 512)) || [],
-        encoding = contentTypeHeader.split(&#x22;charset=&#x22;)[1] || embeddedEncoding[1] || contentTypeHeader;
+    var embeddedEncoding = /&lt;meta[^&gt;]*charset\s*=\s*["']?([\w\-]*)/i.exec(buffer.toString(undefined, 0, 512)) || [],
+        encoding = contentTypeHeader.split("charset=")[1] || embeddedEncoding[1] || contentTypeHeader;
 
-    encoding = iconv.encodingExists(encoding) ? encoding : &#x22;utf8&#x22;;
+    encoding = iconv.encodingExists(encoding) ? encoding : "utf8";
 
     return iconv.decode(buffer, encoding);
 }</pre></li>
@@ -2213,17 +2206,17 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     var crawler = this;
 
     if (!crawler.parseHTMLComments) {
-        resourceText = resourceText.replace(/&#x3c;!--([\s\S]+?)--&#x3e;/g, &#x22;&#x22;);
+        resourceText = resourceText.replace(/&lt;!--([\s\S]+?)--&gt;/g, "");
     }
 
     if (!crawler.parseScriptTags) {
-        resourceText = resourceText.replace(/&#x3c;script(.*?)&#x3e;([\s\S]*?)&#x3c;\/script&#x3e;/gi, &#x22;&#x22;);
+        resourceText = resourceText.replace(/&lt;script(.*?)&gt;([\s\S]*?)&lt;\/script&gt;/gi, "");
     }
 
-    if (crawler.respectRobotsTxt &#x26;&#x26; /&#x3c;meta(?:\s[^&#x3e;]*)?\sname\s*=\s*[&#x22;&#x27;]?robots[&#x22;&#x27;]?[^&#x3e;]*&#x3e;/i.test(resourceText)) {
-        var robotsValue = /&#x3c;meta(?:\s[^&#x3e;]*)?\svalue\s*=\s*[&#x22;&#x27;]?([\w\s,]+)[&#x22;&#x27;]?[^&#x3e;]*&#x3e;/i.exec(resourceText.toLowerCase());
+    if (crawler.respectRobotsTxt &amp;&amp; /&lt;meta(?:\s[^&gt;]*)?\sname\s*=\s*["']?robots["']?[^&gt;]*&gt;/i.test(resourceText)) {
+        var robotsValue = /&lt;meta(?:\s[^&gt;]*)?\svalue\s*=\s*["']?([\w\s,]+)["']?[^&gt;]*&gt;/i.exec(resourceText.toLowerCase());
 
-        if (Array.isArray(robotsValue) &#x26;&#x26; /nofollow/i.test(robotsValue[1])) {
+        if (Array.isArray(robotsValue) &amp;&amp; /nofollow/i.test(robotsValue[1])) {
             return [];
         }
     }
@@ -2256,14 +2249,14 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     <li>description and source-code<pre class="apidocCodePre">domainValid = function (host) {
     var crawler = this;
 
-    // If we&#x27;re ignoring the WWW domain, remove the WWW for comparisons...
+    // If we're ignoring the WWW domain, remove the WWW for comparisons...
     if (crawler.ignoreWWWDomain) {
-        host = host.replace(/^www\./i, &#x22;&#x22;);
+        host = host.replace(/^www\./i, "");
     }
 
     function domainInWhitelist(host) {
 
-        // If there&#x27;s no whitelist, or the whitelist is of zero length,
+        // If there's no whitelist, or the whitelist is of zero length,
         // just return false.
         if (!crawler.domainWhitelist || !crawler.domainWhitelist.length) {
             return false;
@@ -2275,9 +2268,9 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
             if (host === entry) {
                 return true;
             }
-            // If we&#x27;re ignoring WWW subdomains, and both domains,
+            // If we're ignoring WWW subdomains, and both domains,
             // less www. are the same, return true.
-            if (crawler.ignoreWWWDomain &#x26;&#x26; host === entry.replace(/^www\./i, &#x22;&#x22;)) {
+            if (crawler.ignoreWWWDomain &amp;&amp; host === entry.replace(/^www\./i, "")) {
                 return true;
             }
             return false;
@@ -2291,33 +2284,33 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
         subdomain   = subdomain.toLowerCase();
         host        = host.toLowerCase();
 
-        // If we&#x27;re ignoring www, remove it from both
+        // If we're ignoring www, remove it from both
         // (if www is the first domain component...)
         if (crawler.ignoreWWWDomain) {
-            subdomain = subdomain.replace(/^www./ig, &#x22;&#x22;);
-            host = host.replace(/^www./ig, &#x22;&#x22;);
+            subdomain = subdomain.replace(/^www./ig, "");
+            host = host.replace(/^www./ig, "");
         }
 
         // They should be the same flipped around!
-        return subdomain.split(&#x22;&#x22;).reverse().join(&#x22;&#x22;).substr(0, host.length) ===
-                host.split(&#x22;&#x22;).reverse().join(&#x22;&#x22;);
+        return subdomain.split("").reverse().join("").substr(0, host.length) ===
+                host.split("").reverse().join("");
     }
 
-           // If we&#x27;re not filtering by domain, just return true.
+           // If we're not filtering by domain, just return true.
     return !crawler.filterByDomain ||
            // Or if the domain is just the right one, return true.
            host === crawler.host ||
-           // Or if we&#x27;re ignoring WWW subdomains, and both domains,
+           // Or if we're ignoring WWW subdomains, and both domains,
            // less www. are the same, return true.
-           crawler.ignoreWWWDomain &#x26;&#x26;
-               crawler.host.replace(/^www\./i, &#x22;&#x22;) ===
-                   host.replace(/^www\./i, &#x22;&#x22;) ||
+           crawler.ignoreWWWDomain &amp;&amp;
+               crawler.host.replace(/^www\./i, "") ===
+                   host.replace(/^www\./i, "") ||
            // Or if the domain in question exists in the domain whitelist,
            // return true.
            domainInWhitelist(host) ||
-           // Or if we&#x27;re scanning subdomains, and this domain is a subdomain
-           // of the crawler&#x27;s set domain, return true.
-           crawler.scanSubdomains &#x26;&#x26; isSubdomainOf(host, crawler.host);
+           // Or if we're scanning subdomains, and this domain is a subdomain
+           // of the crawler's set domain, return true.
+           crawler.scanSubdomains &amp;&amp; isSubdomainOf(host, crawler.host);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2335,20 +2328,20 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     var crawler = this;
 
     crawler.queue.update(queueItem.id, {
-        status: &#x22;spooled&#x22;
+        status: "spooled"
     }, function(error, queueItem) {
         if (error) {
-            return crawler.emit(&#x22;queueerror&#x22;, error, queueItem);
+            return crawler.emit("queueerror", error, queueItem);
         }
 
-        var client = queueItem.protocol === &#x22;https&#x22; ? https : http,
-            agent  = queueItem.protocol === &#x22;https&#x22; ? crawler.httpsAgent : crawler.httpAgent;
+        var client = queueItem.protocol === "https" ? https : http,
+            agent  = queueItem.protocol === "https" ? crawler.httpsAgent : crawler.httpAgent;
 
-        if (agent.maxSockets &#x3c; crawler.maxConcurrency) {
+        if (agent.maxSockets &lt; crawler.maxConcurrency) {
             agent.maxSockets = crawler.maxConcurrency;
         }
 
-        if (client === https &#x26;&#x26; crawler.ignoreInvalidSSL === true) {
+        if (client === https &amp;&amp; crawler.ignoreInvalidSSL === true) {
             client.rejectUnauthorized = false;
             client.strictSSL = false;
         }
@@ -2367,8 +2360,8 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
 
         // Ensure the request is removed from the tracking array if it is
         // forcibly aborted
-        clientRequest.on(&#x22;abort&#x22;, function() {
-            if (crawler._openRequests.indexOf(clientRequest) &#x3e; -1) {
+        clientRequest.on("abort", function() {
+            if (crawler._openRequests.indexOf(clientRequest) &gt; -1) {
                 crawler._openRequests.splice(
                     crawler._openRequests.indexOf(clientRequest), 1);
             }
@@ -2379,7 +2372,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                 return;
             }
 
-            if (crawler.running &#x26;&#x26; !queueItem.fetched) {
+            if (crawler.running &amp;&amp; !queueItem.fetched) {
                 // Remove this request from the open request map
                 crawler._openRequests.splice(
                     crawler._openRequests.indexOf(clientRequest), 1);
@@ -2387,10 +2380,10 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
 
             crawler.queue.update(queueItem.id, {
                 fetched: true,
-                status: &#x22;timeout&#x22;
+                status: "timeout"
             }, function(error, queueItem) {
                 if (error) {
-                    return crawler.emit(&#x22;queueerror&#x22;, error, queueItem);
+                    return crawler.emit("queueerror", error, queueItem);
                 }
 
 <span class="apidocCodeCommentSpan">                /**
@@ -2399,20 +2392,20 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                  * @param {QueueItem} queueItem The queue item for which the request timed out
                  * @param {Number} timeout      The delay in milliseconds after which the request timed out
                  */
-</span>                crawler.emit(&#x22;fetchtimeout&#x22;, queueItem, crawler.timeout);
+</span>                crawler.emit("fetchtimeout", queueItem, crawler.timeout);
                 clientRequest.abort();
             });
         });
 
-        clientRequest.on(&#x22;error&#x22;, function(errorData) {
+        clientRequest.on("error", function(errorData) {
 
             // This event will be thrown if we manually aborted the request,
-            // but we don&#x27;t want to do anything in that case.
+            // but we don't want to do anything in that case.
             if (clientRequest.aborted) {
                 return;
             }
 
-            if (crawler.running &#x26;&#x26; !queueItem.fetched) {
+            if (crawler.running &amp;&amp; !queueItem.fetched) {
                 // Remove this request from the open request map
                 crawler._openRequests.splice(
                     crawler._openRequests.indexOf(clientRequest), 1);
@@ -2420,13 +2413,13 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
 
             crawler.queue.update(queueItem.id, {
                 fetched: true,
-                status: &#x22;failed&#x22;,
+                status: "failed",
                 stateData: {
                     code: 600
                 }
             }, function(error, queueItem) {
                 if (error) {
-                    return crawler.emit(&#x22;queueerror&#x22;, error, queueItem);
+                    return crawler.emit("queueerror", error, queueItem);
                 }
 
                 /**
@@ -2435,7 +2428,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                  * @param {QueueItem} queueItem The queue item for which the request has errored
                  * @param {Object} error        The error supplied to the `error` event on the request
                  */
-                crawler.emit(&#x22;fetchclienterror&#x22;, queueItem, errorData);
+                crawler.emit("fetchclienterror", queueItem, errorData);
             });
         });
 
@@ -2458,7 +2451,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     <li>description and source-code<pre class="apidocCodePre">getRequestOptions = function (queueItem) {
     var crawler = this;
 
-    var agent = queueItem.protocol === &#x22;https&#x22; ? crawler.httpsAgent : crawler.httpAgent;
+    var agent = queueItem.protocol === "https" ? crawler.httpsAgent : crawler.httpAgent;
 
     // Extract request options from queue;
     var requestHost = queueItem.host,
@@ -2472,26 +2465,26 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
         requestPath = queueItem.url;
     }
 
-    var isStandardHTTPPort = queueItem.protocol === &#x22;http&#x22; &#x26;&#x26; queueItem.port !== 80,
-        isStandardHTTPSPort = queueItem.protocol === &#x22;https&#x22; &#x26;&#x26; queueItem.port !== 443,
+    var isStandardHTTPPort = queueItem.protocol === "http" &amp;&amp; queueItem.port !== 80,
+        isStandardHTTPSPort = queueItem.protocol === "https" &amp;&amp; queueItem.port !== 443,
         isStandardPort = isStandardHTTPPort || isStandardHTTPSPort;
 
     // Load in request options
     var requestOptions = {
-        method: &#x22;GET&#x22;,
+        method: "GET",
         host: requestHost,
         port: requestPort,
         path: requestPath,
         agent: agent,
         headers: {
-            &#x22;Accept&#x22;: &#x22;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#x22;,
-            &#x22;User-Agent&#x22;: crawler.userAgent,
-            &#x22;Host&#x22;: queueItem.host + (queueItem.port &#x26;&#x26; isStandardPort ? &#x22;:&#x22; + queueItem.port : &#x22;&#x22;)
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "User-Agent": crawler.userAgent,
+            "Host": queueItem.host + (queueItem.port &amp;&amp; isStandardPort ? ":" + queueItem.port : "")
         }
     };
 
     if (crawler.decompressResponses) {
-        requestOptions.headers[&#x22;Accept-Encoding&#x22;] = &#x22;gzip, deflate&#x22;;
+        requestOptions.headers["Accept-Encoding"] = "gzip, deflate";
     }
 
     if (queueItem.referrer) {
@@ -2503,32 +2496,32 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
         delete requestOptions.port;
     }
 
-    // Add cookie header from cookie jar if we&#x27;re configured to
+    // Add cookie header from cookie jar if we're configured to
     // send/accept cookies
-    if (crawler.acceptCookies &#x26;&#x26; crawler.cookies.getAsHeader()) {
+    if (crawler.acceptCookies &amp;&amp; crawler.cookies.getAsHeader()) {
         requestOptions.headers.cookie =
             crawler.cookies.getAsHeader(queueItem.host, queueItem.path);
     }
 
     // Add auth headers if we need them
     if (crawler.needsAuth) {
-        var auth = crawler.authUser + &#x22;:&#x22; + crawler.authPass;
+        var auth = crawler.authUser + ":" + crawler.authPass;
 
         // Generate auth header
-        auth = &#x22;Basic &#x22; + new Buffer(auth).toString(&#x22;base64&#x22;);
+        auth = "Basic " + new Buffer(auth).toString("base64");
         requestOptions.headers.Authorization = auth;
     }
 
     // Add proxy auth if we need it
-    if (crawler.proxyUser !== null &#x26;&#x26; crawler.proxyPass !== null) {
-        var proxyAuth = crawler.proxyUser + &#x22;:&#x22; + crawler.proxyPass;
+    if (crawler.proxyUser !== null &amp;&amp; crawler.proxyPass !== null) {
+        var proxyAuth = crawler.proxyUser + ":" + crawler.proxyPass;
 
         // Generate auth header
-        proxyAuth = &#x22;Basic &#x22; + new Buffer(proxyAuth).toString(&#x22;base64&#x22;);
-        requestOptions.headers[&#x22;Proxy-Authorization&#x22;] = proxyAuth;
+        proxyAuth = "Basic " + new Buffer(proxyAuth).toString("base64");
+        requestOptions.headers["Proxy-Authorization"] = proxyAuth;
     }
 
-    // And if we&#x27;ve got any custom headers available
+    // And if we've got any custom headers available
     if (crawler.customHeaders) {
         for (var header in crawler.customHeaders) {
             if (crawler.customHeaders.hasOwnProperty(header)) {
@@ -2556,10 +2549,10 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
         errorMsg;
 
     var robotsTxtUrl = uri(url);
-    var client = robotsTxtUrl.protocol() === &#x22;https&#x22; ? https : http;
+    var client = robotsTxtUrl.protocol() === "https" ? https : http;
 
     // Apply the ignoreInvalidSSL setting to https connections
-    if (client === https &#x26;&#x26; crawler.ignoreInvalidSSL === true) {
+    if (client === https &amp;&amp; crawler.ignoreInvalidSSL === true) {
         client.rejectUnauthorized = false;
         client.strictSSL = false;
     }
@@ -2568,44 +2561,44 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
 
     // Get the resource!
     var clientRequest = client.request(requestOptions, function(response) {
-        if (response.statusCode &#x3e;= 200 &#x26;&#x26; response.statusCode &#x3c; 300) {
+        if (response.statusCode &gt;= 200 &amp;&amp; response.statusCode &lt; 300) {
             var responseLength =
-                    parseInt(response.headers[&#x22;content-length&#x22;], 10) ||
+                    parseInt(response.headers["content-length"], 10) ||
                     crawler.maxResourceSize,
                 responseBuffer = new Buffer(responseLength),
                 responseLengthReceived = 0;
 
-            response.on(&#x22;data&#x22;, function(chunk) {
-                if (responseLengthReceived + chunk.length &#x3c;= crawler.maxResourceSize) {
+            response.on("data", function(chunk) {
+                if (responseLengthReceived + chunk.length &lt;= crawler.maxResourceSize) {
                     chunk.copy(responseBuffer, responseLengthReceived, 0, chunk.length);
                     responseLengthReceived += chunk.length;
                 } else {
                     response.destroy();
-                    callback(new Error(&#x22;robots.txt exceeded maxResourceSize&#x22;));
+                    callback(new Error("robots.txt exceeded maxResourceSize"));
                 }
             });
 
             var decodeAndReturnResponse = function(error, responseBuffer) {
                 if (error) {
-                    return callback(new Error(&#x22;Couldn&#x27;t unzip robots.txt response body&#x22;));
+                    return callback(new Error("Couldn't unzip robots.txt response body"));
                 }
 
-                var contentType = response.headers[&#x22;content-type&#x22;],
+                var contentType = response.headers["content-type"],
                     responseBody = crawler.decodeBuffer(responseBuffer, contentType);
 
                 callback(undefined, robotsTxtUrl.href(), responseBody);
             };
 
-            response.on(&#x22;end&#x22;, function() {
-                var contentEncoding = response.headers[&#x22;content-encoding&#x22;];
+            response.on("end", function() {
+                var contentEncoding = response.headers["content-encoding"];
 
-                if (contentEncoding &#x26;&#x26; /(gzip|deflate)/.test(contentEncoding)) {
+                if (contentEncoding &amp;&amp; /(gzip|deflate)/.test(contentEncoding)) {
                     zlib.unzip(responseBuffer, decodeAndReturnResponse);
                 } else {
                     decodeAndReturnResponse(undefined, responseBuffer);
                 }
             });
-        } else if (response.statusCode &#x3e;= 300 &#x26;&#x26; response.statusCode &#x3c; 400 &#x26;&#x26;
+        } else if (response.statusCode &gt;= 300 &amp;&amp; response.statusCode &lt; 400 &amp;&amp;
             response.headers.location) {
 
             response.destroy();
@@ -2617,14 +2610,14 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
             if (crawler.domainValid(redirectTarget.hostname())) {
                 crawler.getRobotsTxt(redirectTarget.href(), callback);
             } else {
-                errorMsg = util.format(&#x22;%s redirected to a disallowed domain (%s)&#x22;, robotsTxtUrl.href(), redirectTarget.hostname
+                errorMsg = util.format("%s redirected to a disallowed domain (%s)", robotsTxtUrl.href(), redirectTarget.hostname
 ());
                 callback(new Error(errorMsg));
             }
         } else {
             response.destroy();
 
-            errorMsg = util.format(&#x22;Server responded with status %d when fetching robots.txt&#x22;, response.statusCode);
+            errorMsg = util.format("Server responded with status %d when fetching robots.txt", response.statusCode);
             callback(new Error(errorMsg));
         }
     });
@@ -2633,10 +2626,10 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
 
     clientRequest.setTimeout(crawler.timeout, function() {
         clientRequest.abort();
-        callback(new Error(&#x22;robots.txt request timed out&#x22;));
+        callback(new Error("robots.txt request timed out"));
     });
 
-    clientRequest.on(&#x22;error&#x22;, function(errorData) {
+    clientRequest.on("error", function(errorData) {
         if (!clientRequest.aborted) {
             callback(errorData);
         }
@@ -2665,10 +2658,10 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
         responseBuffer,
         responseLength,
         responseLengthReceived = 0,
-        contentType = response.headers[&#x22;content-type&#x22;];
+        contentType = response.headers["content-type"];
 
     timeCommenced = timeCommenced || Date.now();
-    responseLength = parseInt(response.headers[&#x22;content-length&#x22;], 10);
+    responseLength = parseInt(response.headers["content-length"], 10);
     responseLength = !isNaN(responseLength) ? responseLength : 0;
 
     crawler.queue.update(queueItem.id, {
@@ -2682,13 +2675,13 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
         }
     }, function(error, queueItem) {
         if (error) {
-            return crawler.emit(&#x22;queueerror&#x22;, error, queueItem);
+            return crawler.emit("queueerror", error, queueItem);
         }
 
         // Do we need to save cookies? Were we sent any?
-        if (crawler.acceptCookies &#x26;&#x26; response.headers.hasOwnProperty(&#x22;set-cookie&#x22;)) {
+        if (crawler.acceptCookies &amp;&amp; response.headers.hasOwnProperty("set-cookie")) {
             try {
-                crawler.cookies.addFromHeaders(response.headers[&#x22;set-cookie&#x22;]);
+                crawler.cookies.addFromHeaders(response.headers["set-cookie"]);
             } catch (error) {
 <span class="apidocCodeCommentSpan">                /**
                  * Fired when an error was encountered while trying to add a
@@ -2698,7 +2691,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                  * @param {Error} error         The error that was encountered
                  * @param {String} cookie       The Set-Cookie header value that was returned from the request
                  */
-</span>                crawler.emit(&#x22;cookieerror&#x22;, queueItem, error, response.headers[&#x22;set-cookie&#x22;]);
+</span>                crawler.emit("cookieerror", queueItem, error, response.headers["set-cookie"]);
             }
         }
 
@@ -2707,18 +2700,18 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
          * @event Crawler#fetchheaders
          * @param {QueueItem} queueItem           The queue item for which the headers have been received
          * @param {http.IncomingMessage} response The [http.IncomingMessage]{@link https://nodejs.org/api/http.html#http_class_http_incomingmessage
-} for the request&#x27;s response
+} for the request's response
          */
-        crawler.emit(&#x22;fetchheaders&#x22;, queueItem, response);
+        crawler.emit("fetchheaders", queueItem, response);
 
         // We already know that the response will be too big
-        if (responseLength &#x3e; crawler.maxResourceSize) {
+        if (responseLength &gt; crawler.maxResourceSize) {
 
             crawler.queue.update(queueItem.id, {
                 fetched: true
             }, function(error, queueItem) {
                 if (error) {
-                    return crawler.emit(&#x22;queueerror&#x22;, error, queueItem);
+                    return crawler.emit("queueerror", error, queueItem);
                 }
 
                 // Remove this request from the open request map
@@ -2726,14 +2719,14 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                     crawler._openRequests.indexOf(response.req), 1);
 
                 response.destroy();
-                crawler.emit(&#x22;fetchdataerror&#x22;, queueItem, response);
+                crawler.emit("fetchdataerror", queueItem, response);
             });
 
         // We should just go ahead and get the data
-        } else if (response.statusCode &#x3e;= 200 &#x26;&#x26; response.statusCode &#x3c; 300) {
+        } else if (response.statusCode &gt;= 200 &amp;&amp; response.statusCode &lt; 300) {
 
             async.every(crawler._downloadConditions, function(downloadCondition, callback) {
-                if (downloadCondition.length &#x3c; 3) {
+                if (downloadCondition.length &lt; 3) {
                     try {
                         callback(null, downloadCondition(queueItem, response));
                     } catch (error) {
@@ -2768,7 +2761,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     var crawler = this;
 
     return crawler.supportedMimeTypes.some(function(mimeCheck) {
-        if (typeof mimeCheck === &#x22;string&#x22;) {
+        if (typeof mimeCheck === "string") {
             return mimeCheck === mimetype;
         }
 
@@ -2791,35 +2784,35 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     var newUrl,
         crawler = this;
 
-    if (typeof referrer !== &#x22;object&#x22;) {
+    if (typeof referrer !== "object") {
         referrer = {
             url: crawler.initialURL,
             depth: QUEUE_ITEM_INITIAL_DEPTH - 1
         };
     }
 
-    // If the URL didn&#x27;t contain anything, don&#x27;t fetch it.
-    if (!(url &#x26;&#x26; url.trim().length)) {
+    // If the URL didn't contain anything, don't fetch it.
+    if (!(url &amp;&amp; url.trim().length)) {
         return false;
     }
 
     // Check if querystring should be ignored
     if (crawler.stripQuerystring === true) {
-        url = uri(url).search(&#x22;&#x22;).href();
+        url = uri(url).search("").href();
     }
 
-    if (crawler.stripWWWDomain &#x26;&#x26; url.match(/https?:\/\/(www\.).*/i)) {
-        url = url.replace(&#x22;www.&#x22;, &#x22;&#x22;);
+    if (crawler.stripWWWDomain &amp;&amp; url.match(/https?:\/\/(www\.).*/i)) {
+        url = url.replace("www.", "");
     }
 
     try {
         newUrl = uri(url).absoluteTo(referrer.url).normalize();
 
-        if (crawler.urlEncoding === &#x22;iso8859&#x22;) {
+        if (crawler.urlEncoding === "iso8859") {
             newUrl = newUrl.iso8859();
         }
     } catch (e) {
-        // Couldn&#x27;t process the URL, since URIjs choked on it.
+        // Couldn't process the URL, since URIjs choked on it.
         return false;
     }
 
@@ -2828,13 +2821,13 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
         host:      newUrl.hostname(),
         path:      newUrl.resource(),
         port:      newUrl.port(),
-        protocol:  newUrl.protocol() || &#x22;http&#x22;,
+        protocol:  newUrl.protocol() || "http",
         uriPath:   newUrl.path(),
         url:       newUrl.href(),
         depth:     referrer.depth + 1,
         referrer:  referrer.url,
         fetched:   false,
-        status:    &#x22;created&#x22;,
+        status:    "created",
         stateData: {}
     };
 }</pre></li>
@@ -2859,7 +2852,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
 
         // Unspecified protocol. Assume http
         if (!protocol) {
-            protocol = &#x22;http&#x22;;
+            protocol = "http";
         }
 
     } catch (e) {
@@ -2895,10 +2888,10 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
      * @param {QueueItem} queueItem The queue item for which the request timed out
      * @param {Number} timeout      The delay in milliseconds after which the request timed out
      */
-</span>    crawler.emit(&#x22;discoverycomplete&#x22;, queueItem, resources);
+</span>    crawler.emit("discoverycomplete", queueItem, resources);
 
     resources.forEach(function(url) {
-        if (crawler.maxDepth === 0 || queueItem.depth + 1 &#x3c;= crawler.maxDepth) {
+        if (crawler.maxDepth === 0 || queueItem.depth + 1 &lt;= crawler.maxDepth) {
             crawler.queueURL(url, queueItem);
         }
     });
@@ -2919,7 +2912,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     <ul>
     <li>description and source-code<pre class="apidocCodePre">queueURL = function (url, referrer, force) {
     var crawler = this,
-        queueItem = typeof url === &#x22;object&#x22; ? url : crawler.processURL(url, referrer);
+        queueItem = typeof url === "object" ? url : crawler.processURL(url, referrer);
 
     // URL Parser decided this URL was junky. Next please!
     if (!queueItem) {
@@ -2929,27 +2922,27 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
     // Check that the domain is valid before adding it to the queue
     if (!crawler.domainValid(queueItem.host)) {
 <span class="apidocCodeCommentSpan">        /**
-         * Fired when a resource wasn&#x27;t queued because of an invalid domain name
+         * Fired when a resource wasn't queued because of an invalid domain name
          * @event Crawler#invaliddomain
          * @param {QueueItem} queueItem The queue item representing the disallowed URL
          */
-</span>        crawler.emit(&#x22;invaliddomain&#x22;, queueItem);
+</span>        crawler.emit("invaliddomain", queueItem);
         return false;
     }
 
     if (!crawler.urlIsAllowed(queueItem.url)) {
         /**
-         * Fired when a resource wasn&#x27;t queued because it was disallowed by the
-         * site&#x27;s robots.txt rules
+         * Fired when a resource wasn't queued because it was disallowed by the
+         * site's robots.txt rules
          * @event Crawler#fetchdisallowed
          * @param {QueueItem} queueItem The queue item representing the disallowed URL
          */
-        crawler.emit(&#x22;fetchdisallowed&#x22;, queueItem);
+        crawler.emit("fetchdisallowed", queueItem);
         return false;
     }
 
     async.every(crawler._fetchConditions, function(fetchCondition, callback) {
-        if (fetchCondition.length &#x3c; 3) {
+        if (fetchCondition.length &lt; 3) {
             try {
                 callback(null, fetchCondition(queueItem, referrer));
             } catch (error) {
@@ -2966,7 +2959,7 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
              * @param {QueueItem} queueItem The queue item that was processed when the error was encountered
              * @param {*}         error
              */
-            crawler.emit(&#x22;fetchconditionerror&#x22;, queueItem, error);
+            crawler.emit("fetchconditionerror", queueItem, error);
             return false;
         }
 
@@ -2974,23 +2967,23 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
             /**
              * Fired when a fetch condition prevented the queueing of a URL
              * @event Crawler#fetchprevented
-             * @param {QueueItem} queueItem      The queue item that didn&#x27;t pass the fetch conditions
+             * @param {QueueItem} queueItem      The queue item that didn't pass the fetch conditions
              * @param {Function}  fetchCondition The first fetch condition that returned false
              */
-            crawler.emit(&#x22;fetchprevented&#x22;, queueItem);
+            crawler.emit("fetchprevented", queueItem);
             return false;
         }
 
         crawler.queue.add(queueItem, force, function(error) {
             if (error) {
-                if (error.code &#x26;&#x26; error.code === &#x22;DUPLICATE&#x22;) {
+                if (error.code &amp;&amp; error.code === "DUPLICATE") {
                     /**
                      * Fired when a new queue item was rejected because another
                      * queue item with the same URL was already in the queue
                      * @event Crawler#queueduplicate
                      * @param {QueueItem} queueItem The queue item that was rejected
                      */
-                    return crawler.emit(&#x22;queueduplicate&#x22;, queueItem);
+                    return crawler.emit("queueduplicate", queueItem);
                 }
 
                 /**
@@ -2999,16 +2992,16 @@ fetched (or not), and `referrerQueueItem` represents the resource where the new
                  * @param {QueueItem} error     The error that was returned by the queue
                  * @param {QueueItem} queueItem The queue item that the crawler tried to update when it encountered the error
                  */
-                return crawler.emit(&#x22;queueerror&#x22;, error, queueItem);
+                return crawler.emit("queueerror", error, queueItem);
             }
 
             /**
-             * Fired when an item was added to the crawler&#x27;s queue
+             * Fired when an item was added to the crawler's queue
              * @event Crawler#queueadd
              * @param {QueueItem} queueItem The queue item that was added to the queue
              * @param {QueueItem} referrer  The queue item representing the resource where the new queue item was found
              */
-            crawler.emit(&#x22;queueadd&#x22;, queueItem, referrer);
+            crawler.emit("queueadd", queueItem, referrer);
         });
     });
 
@@ -3022,13 +3015,13 @@ whether the URL should be queued regardless of whether it already exists in the
 queue or not.
 
 ```js
-crawler.<span class="apidocCodeKeywordSpan">queueURL</span>(&#x22;/example.html&#x22;, referrerQueueItem, false);
+crawler.<span class="apidocCodeKeywordSpan">queueURL</span>("/example.html", referrerQueueItem, false);
 ```
 
 ### Queue items
 
-Because when working with simplecrawler, you&#x27;ll constantly be handed queue items,
-it helps to know what&#x27;s inside them. These are the properties every queue item
+Because when working with simplecrawler, you'll constantly be handed queue items,
+it helps to know what's inside them. These are the properties every queue item
 is expected to have:
 ...</pre></li>
     </ul>
@@ -3048,11 +3041,11 @@ is expected to have:
     if (index instanceof Function) {
         var itemIndex = crawler._downloadConditions.indexOf(index);
         return Boolean(crawler._downloadConditions.splice(itemIndex, 1));
-    } else if (typeof index === &#x22;number&#x22;) {
+    } else if (typeof index === "number") {
         return Boolean(crawler._downloadConditions.splice(index, 1));
     }
 
-    throw new Error(&#x22;Unable to find indexed download condition&#x22;);
+    throw new Error("Unable to find indexed download condition");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 function listener(queueItem, response, callback) {
@@ -3088,11 +3081,11 @@ Like any other web crawler, simplecrawler has a queue. It can be directly
     if (index instanceof Function) {
         var itemIndex = crawler._downloadConditions.indexOf(index);
         return Boolean(crawler._fetchConditions.splice(itemIndex, 1));
-    } else if (typeof index === &#x22;number&#x22;) {
+    } else if (typeof index === "number") {
         return Boolean(crawler._fetchConditions.splice(index, 1));
     }
 
-    throw new Error(&#x22;Unable to find indexed fetch condition&#x22;);
+    throw new Error("Unable to find indexed fetch condition");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 function listener(queueItem, stateData) {
@@ -3136,7 +3129,7 @@ While fetch conditions let you determine which resources to put in the queue,
     queueItem.depth = QUEUE_ITEM_INITIAL_DEPTH;
 
     crawler.queue.add(queueItem, false, function(error) {
-        if (error &#x26;&#x26; error.code !== &#x22;DUPLICATE&#x22;) {
+        if (error &amp;&amp; error.code !== "DUPLICATE") {
             throw error;
         }
 
@@ -3149,11 +3142,11 @@ While fetch conditions let you determine which resources to put in the queue,
 
 <span class="apidocCodeCommentSpan">        /**
          * Fired when the crawl starts. This event gives you the opportunity to
-         * adjust the crawler&#x27;s configuration, since the crawl won&#x27;t actually start
+         * adjust the crawler's configuration, since the crawl won't actually start
          * until the next processor tick.
          * @event Crawler#fetchstart
          */
-</span>        crawler.emit(&#x22;crawlstart&#x22;);
+</span>        crawler.emit("crawlstart");
     });
 
     return crawler;
@@ -3161,9 +3154,9 @@ While fetch conditions let you determine which resources to put in the queue,
     <li>example usage<pre class="apidocCodePre">...
 ```
 
-Then, when you&#x27;re satisfied and ready to go, start the crawler! It&#x27;ll run
+Then, when you're satisfied and ready to go, start the crawler! It'll run
 through its queue finding linked resources on the domain to download, until it
-can&#x27;t find any more.
+can't find any more.
 
 ```js
 crawler.<span class="apidocCodeKeywordSpan">start</span>();
@@ -3171,7 +3164,7 @@ crawler.<span class="apidocCodeKeywordSpan">start</span>();
 
 ## Events
 
-simplecrawler&#x27;s API is event driven, and there are plenty of events emitted
+simplecrawler's API is event driven, and there are plenty of events emitted
 during the different stages of the crawl. Arguments passed to events are written
 in parentheses.
 ...</pre></li>
@@ -3191,7 +3184,7 @@ in parentheses.
     clearInterval(crawler.crawlIntervalID);
     crawler.running = false;
 
-    // If we&#x27;ve been asked to terminate the existing requests, do that now.
+    // If we've been asked to terminate the existing requests, do that now.
     if (abortRequestsInFlight) {
         crawler._openRequests.forEach(function(request) {
             request.abort();
@@ -3273,7 +3266,7 @@ until either you execute the callback it returns, or a timeout is reached
 #### Example asynchronous event listener
 
 ```js
-crawler.on(&#x22;fetchcomplete&#x22;, function(queueItem, data, res) {
+crawler.on("fetchcomplete", function(queueItem, data, res) {
     var continue = this.<span class="apidocCodeKeywordSpan">wait</span>();
     doSomeDiscovery(data, function(foundURLs) {
         foundURLs.forEach(crawler.queueURL.bind(crawler));
@@ -3308,20 +3301,20 @@ crawler.on(&#x22;fetchcomplete&#x22;, function(queueItem, data, res) {
      * @private
      * @type {Number}
      */
-</span>    Object.defineProperty(this, &#x22;_oldestUnfetchedIndex&#x22;, {
+</span>    Object.defineProperty(this, "_oldestUnfetchedIndex", {
         enumerable: false,
         writable: true,
         value: 0
     });
 
     /**
-     * Serves as a cache for what URL&#x27;s have been fetched. Keys are URL&#x27;s,
+     * Serves as a cache for what URL's have been fetched. Keys are URL's,
      * values are booleans.
      * @name FetchQueue._scanIndex
      * @private
      * @type {Object}
      */
-    Object.defineProperty(this, &#x22;_scanIndex&#x22;, {
+    Object.defineProperty(this, "_scanIndex", {
         enumerable: false,
         writable: true,
         value: {}
@@ -3334,15 +3327,15 @@ crawler.on(&#x22;fetchcomplete&#x22;, function(queueItem, data, res) {
      * @name FetchQueue._allowedStatistics
      * @type {Array}
      */
-    Object.defineProperty(this, &#x22;_allowedStatistics&#x22;, {
+    Object.defineProperty(this, "_allowedStatistics", {
         enumerable: false,
         writable: true,
         value: [
-            &#x22;actualDataSize&#x22;,
-            &#x22;contentLength&#x22;,
-            &#x22;downloadTime&#x22;,
-            &#x22;requestLatency&#x22;,
-            &#x22;requestTime&#x22;
+            "actualDataSize",
+            "contentLength",
+            "downloadTime",
+            "requestLatency",
+            "requestTime"
         ]
     });
 }</pre></li>
@@ -3382,7 +3375,7 @@ crawler.on(&#x22;fetchcomplete&#x22;, function(queueItem, data, res) {
     function addToQueue() {
         queue._scanIndex[queueItem.url] = true;
         queueItem.id = queue.length;
-        queueItem.status = &#x22;queued&#x22;;
+        queueItem.status = "queued";
         queue.push(queueItem);
         callback(null, queueItem);
     }
@@ -3393,14 +3386,14 @@ crawler.on(&#x22;fetchcomplete&#x22;, function(queueItem, data, res) {
         } else if (!exists) {
             addToQueue();
         } else if (force) {
-            if (queue.indexOf(queueItem) &#x3e; -1) {
-                callback(new Error(&#x22;Can&#x27;t add a queueItem instance twice. You may create a new one from the same URL however.&#x22;));
+            if (queue.indexOf(queueItem) &gt; -1) {
+                callback(new Error("Can't add a queueItem instance twice. You may create a new one from the same URL however."));
             } else {
                 addToQueue();
             }
         } else {
-            var error = new Error(&#x22;Resource already exists in queue!&#x22;);
-            error.code = &#x22;DUPLICATE&#x22;;
+            var error = new Error("Resource already exists in queue!");
+            error.code = "DUPLICATE";
             callback(error);
         }
     });
@@ -3439,11 +3432,11 @@ return jar;
         queue = this;
 
     if (queue._allowedStatistics.indexOf(statisticName) === -1) {
-        return callback(new Error(&#x22;Invalid statistic&#x22;));
+        return callback(new Error("Invalid statistic"));
     }
 
     queue.forEach(function(item) {
-        if (item.fetched &#x26;&#x26; Number.isFinite(item.stateData[statisticName])) {
+        if (item.fetched &amp;&amp; Number.isFinite(item.stateData[statisticName])) {
             sum += item.stateData[statisticName];
             count++;
         }
@@ -3453,14 +3446,14 @@ return jar;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```js
-crawler.queue.max(&#x22;requestLatency&#x22;, function(error, max) {
-    console.log(&#x22;The maximum request latency was %dms.&#x22;, max);
+crawler.queue.max("requestLatency", function(error, max) {
+    console.log("The maximum request latency was %dms.", max);
 });
-crawler.queue.min(&#x22;downloadTime&#x22;, function(error, min) {
-    console.log(&#x22;The minimum download time was %dms.&#x22;, min);
+crawler.queue.min("downloadTime", function(error, min) {
+    console.log("The minimum download time was %dms.", min);
 });
-crawler.queue.<span class="apidocCodeKeywordSpan">avg</span>(&#x22;actualDataSize&#x22;, function(error, avg) {
-    console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
+crawler.queue.<span class="apidocCodeKeywordSpan">avg</span>("actualDataSize", function(error, avg) {
+    console.log("The average resource size received is %d bytes.", avg);
 });
 ```
 
@@ -3497,11 +3490,11 @@ comparator and a callback.
 
 ```js
 crawler.queue.<span class="apidocCodeKeywordSpan">countItems</span>({ fetched: true }, function(error, count) {
-    console.log(&#x22;The number of completed items is %d&#x22;, count);
+    console.log("The number of completed items is %d", count);
 });
 
-crawler.queue.filterItems({ status: &#x22;notfound&#x22; }, function(error, items) {
-    console.log(&#x22;These items returned 404 or 410 HTTP statuses&#x22;, items);
+crawler.queue.filterItems({ status: "notfound" }, function(error, items) {
+    console.log("These items returned 404 or 410 HTTP statuses", items);
 });
 ```
 ...</pre></li>
@@ -3525,12 +3518,12 @@ crawler.queue.filterItems({ status: &#x22;notfound&#x22; }, function(error, item
             return callback(err);
         }
 
-        if (!fileData.toString(&#x22;utf8&#x22;).length) {
-            return callback(new Error(&#x22;Failed to defrost queue from zero-length JSON.&#x22;));
+        if (!fileData.toString("utf8").length) {
+            return callback(new Error("Failed to defrost queue from zero-length JSON."));
         }
 
         try {
-            defrostedQueue = JSON.parse(fileData.toString(&#x22;utf8&#x22;));
+            defrostedQueue = JSON.parse(fileData.toString("utf8"));
         } catch (error) {
             return callback(error);
         }
@@ -3538,11 +3531,11 @@ crawler.queue.filterItems({ status: &#x22;notfound&#x22; }, function(error, item
         queue._oldestUnfetchedIndex = defrostedQueue.length - 1;
         queue._scanIndex = {};
 
-        for (var i = 0; i &#x3c; defrostedQueue.length; i++) {
+        for (var i = 0; i &lt; defrostedQueue.length; i++) {
             var queueItem = defrostedQueue[i];
             queue.push(queueItem);
 
-            if (queueItem.status === &#x22;queued&#x22;) {
+            if (queueItem.status === "queued") {
                 queue._oldestUnfetchedIndex = Math.min(queue._oldestUnfetchedIndex, i);
             }
 
@@ -3553,14 +3546,14 @@ crawler.queue.filterItems({ status: &#x22;notfound&#x22; }, function(error, item
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-otherwise you&#x27;ll get an empty file.
+otherwise you'll get an empty file.
 
 ```js
-crawler.queue.freeze(&#x22;mysavedqueue.json&#x22;, function () {
+crawler.queue.freeze("mysavedqueue.json", function () {
     process.exit();
 });
 
-crawler.queue.<span class="apidocCodeKeywordSpan">defrost</span>(&#x22;mysavedqueue.json&#x22;);
+crawler.queue.<span class="apidocCodeKeywordSpan">defrost</span>("mysavedqueue.json");
 ```
 
 ## Cookies
@@ -3611,11 +3604,11 @@ comparator and a callback.
 
 ```js
 crawler.queue.countItems({ fetched: true }, function(error, count) {
-    console.log(&#x22;The number of completed items is %d&#x22;, count);
+    console.log("The number of completed items is %d", count);
 });
 
-crawler.queue.<span class="apidocCodeKeywordSpan">filterItems</span>({ status: &#x22;notfound&#x22; }, function(error, items) {
-    console.log(&#x22;These items returned 404 or 410 HTTP statuses&#x22;, items);
+crawler.queue.<span class="apidocCodeKeywordSpan">filterItems</span>({ status: "notfound" }, function(error, items) {
+    console.log("These items returned 404 or 410 HTTP statuses", items);
 });
 ```
 
@@ -3639,7 +3632,7 @@ items based on properties in their `stateData` object as well.
     // Re-queue in-progress items before freezing...
     queue.forEach(function(item) {
         if (item.fetched !== true) {
-            item.status = &#x22;queued&#x22;;
+            item.status = "queued";
         }
     });
 
@@ -3652,14 +3645,14 @@ commences and stops is perfectly reasonable.
 
 Note that the methods themselves are asynchronous, so if you are going to exit
 the process after you do the freezing, make sure you wait for callback -
-otherwise you&#x27;ll get an empty file.
+otherwise you'll get an empty file.
 
 ```js
-crawler.queue.<span class="apidocCodeKeywordSpan">freeze</span>(&#x22;mysavedqueue.json&#x22;, function () {
+crawler.queue.<span class="apidocCodeKeywordSpan">freeze</span>("mysavedqueue.json", function () {
     process.exit();
 });
 
-crawler.queue.defrost(&#x22;mysavedqueue.json&#x22;);
+crawler.queue.defrost("mysavedqueue.json");
 ```
 
 ## Cookies
@@ -3681,8 +3674,8 @@ crawler.queue.defrost(&#x22;mysavedqueue.json&#x22;);
     queue.getLength(function(error, length) {
         if (error) {
             callback(error);
-        } else if (index &#x3e;= length) {
-            callback(new RangeError(&#x22;Index was greater than the queue&#x27;s length&#x22;));
+        } else if (index &gt;= length) {
+            callback(new RangeError("Index was greater than the queue's length"));
         } else {
             callback(null, queue[index]);
         }
@@ -3732,7 +3725,7 @@ if (err) {
     throw err;
 }
 
-console.log(&#x22;fetched %d of %d — %d open requests, %d open listeners&#x22;,
+console.log("fetched %d of %d â€” %d open requests, %d open listeners",
     completeCount,
     length,
 ...</pre></li>
@@ -3752,11 +3745,11 @@ console.log(&#x22;fetched %d of %d — %d open requests, %d open listeners&#x22;
         queue = this;
 
     if (queue._allowedStatistics.indexOf(statisticName) === -1) {
-        return callback(new Error(&#x22;Invalid statistic&#x22;));
+        return callback(new Error("Invalid statistic"));
     }
 
     queue.forEach(function(item) {
-        if (item.fetched &#x26;&#x26; item.stateData[statisticName] &#x3e; maximum) {
+        if (item.fetched &amp;&amp; item.stateData[statisticName] &gt; maximum) {
             maximum = item.stateData[statisticName];
         }
     });
@@ -3771,14 +3764,14 @@ You can get the maximum, minimum, and average values for each with the
 respectively.
 
 ```js
-crawler.queue.<span class="apidocCodeKeywordSpan">max</span>(&#x22;requestLatency&#x22;, function(error, max) {
-console.log(&#x22;The maximum request latency was %dms.&#x22;, max);
+crawler.queue.<span class="apidocCodeKeywordSpan">max</span>("requestLatency", function(error, max) {
+console.log("The maximum request latency was %dms.", max);
 });
-crawler.queue.min(&#x22;downloadTime&#x22;, function(error, min) {
-console.log(&#x22;The minimum download time was %dms.&#x22;, min);
+crawler.queue.min("downloadTime", function(error, min) {
+console.log("The minimum download time was %dms.", min);
 });
-crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
-console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
+crawler.queue.avg("actualDataSize", function(error, avg) {
+console.log("The average resource size received is %d bytes.", avg);
 ...</pre></li>
     </ul>
 
@@ -3796,11 +3789,11 @@ console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
         queue = this;
 
     if (queue._allowedStatistics.indexOf(statisticName) === -1) {
-        return callback(new Error(&#x22;Invalid statistic&#x22;));
+        return callback(new Error("Invalid statistic"));
     }
 
     queue.forEach(function(item) {
-        if (item.fetched &#x26;&#x26; item.stateData[statisticName] &#x3c; minimum) {
+        if (item.fetched &amp;&amp; item.stateData[statisticName] &lt; minimum) {
             minimum = item.stateData[statisticName];
         }
     });
@@ -3812,14 +3805,14 @@ console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
 respectively.
 
 ```js
-crawler.queue.max(&#x22;requestLatency&#x22;, function(error, max) {
-    console.log(&#x22;The maximum request latency was %dms.&#x22;, max);
+crawler.queue.max("requestLatency", function(error, max) {
+    console.log("The maximum request latency was %dms.", max);
 });
-crawler.queue.<span class="apidocCodeKeywordSpan">min</span>(&#x22;downloadTime&#x22;, function(error, min) {
-    console.log(&#x22;The minimum download time was %dms.&#x22;, min);
+crawler.queue.<span class="apidocCodeKeywordSpan">min</span>("downloadTime", function(error, min) {
+    console.log("The minimum download time was %dms.", min);
 });
-crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
-    console.log(&#x22;The average resource size received is %d bytes.&#x22;, avg);
+crawler.queue.avg("actualDataSize", function(error, avg) {
+    console.log("The average resource size received is %d bytes.", avg);
 });
 ```
 ...</pre></li>
@@ -3837,8 +3830,8 @@ crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
     <li>description and source-code<pre class="apidocCodePre">oldestUnfetchedItem = function (callback) {
     var queue = this;
 
-    for (var i = queue._oldestUnfetchedIndex; i &#x3c; queue.length; i++) {
-        if (queue[i].status === &#x22;queued&#x22;) {
+    for (var i = queue._oldestUnfetchedIndex; i &lt; queue.length; i++) {
+        if (queue[i].status === "queued") {
             queue._oldestUnfetchedIndex = i;
             callback(null, queue[i]);
             return;
@@ -3846,7 +3839,7 @@ crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
     }
 
     // When no unfetched queue items remain, we previously called back with an
-    // error, but since it&#x27;s not really an error condition, we opted to just
+    // error, but since it's not really an error condition, we opted to just
     // call back with (null, null) instead
     callback(null, null);
 }</pre></li>
@@ -3866,7 +3859,7 @@ crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
     var queue = this,
         queueItem;
 
-    for (var i = 0; i &#x3c; queue.length; i++) {
+    for (var i = 0; i &lt; queue.length; i++) {
         if (queue[i].id === id) {
             queueItem = queue[i];
             break;
@@ -3874,7 +3867,7 @@ crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
     }
 
     if (!queueItem) {
-        callback(new Error(&#x22;No queueItem found with that URL&#x22;));
+        callback(new Error("No queueItem found with that URL"));
     } else {
         deepAssign(queueItem, updates);
         callback(null, queueItem);
@@ -3882,21 +3875,21 @@ crawler.queue.avg(&#x22;actualDataSize&#x22;, function(error, avg) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 // Trim whitespace. If no path is present - assume index.html.
-var sanitisedPath = path.length ? path.replace(/\s*$/ig, &#x22;&#x22;) : &#x22;index.html&#x22;;
+var sanitisedPath = path.length ? path.replace(/\s*$/ig, "") : "index.html";
 var headers = queueObject.stateData.headers, sanitisedPathParts;
 
 if (sanitisedPath.match(/\?/)) {
     sanitisedPathParts = sanitisedPath.split(/\?/g);
     var resource = sanitisedPathParts.shift();
-    var hashedQS = crypto.createHash(&#x22;sha1&#x22;).<span class="apidocCodeKeywordSpan">update</span>(sanitisedPathParts.join
-(&#x22;?&#x22;)).digest(&#x22;hex&#x22;);
-    sanitisedPath = resource + &#x22;?&#x22; + hashedQS;
+    var hashedQS = crypto.createHash("sha1").<span class="apidocCodeKeywordSpan">update</span>(sanitisedPathParts.join
+("?")).digest("hex");
+    sanitisedPath = resource + "?" + hashedQS;
 }
 
 pathStack = sanitisedPath.split(/\//g);
 pathStack = pathStack.map(function(pathChunk) {
-    if (pathChunk.length &#x3e;= 250) {
-        return crypto.createHash(&#x22;sha1&#x22;).update(pathChunk).digest(&#x22;hex&#x22;);
+    if (pathChunk.length &gt;= 250) {
+        return crypto.createHash("sha1").update(pathChunk).digest("hex");
 ...</pre></li>
     </ul>
 
@@ -3909,3 +3902,4 @@ pathStack = pathStack.map(function(pathChunk) {
     ]
 </div>
 </div>
+</body></html>
